@@ -16,16 +16,17 @@ function loadPage($page)
       case "exercice6":
       case "exercice7":
       case "exercice8":
-         require $page_path;
          break;
       default:
          loadErrorPage("404");
    }
 }
 
-function loadExercice($part,$page){
+function loadExercice($part, $page)
+{
    global $root;
    $exercice = $root . "/public/views/" . $part . "/" . $page . "/" . $page . ".php";
+   $exists_page = file_exists($exercice);
    switch ($page) {
       case "exercice1":
       case "exercice2":
@@ -35,7 +36,13 @@ function loadExercice($part,$page){
       case "exercice6":
       case "exercice7":
       case "exercice8":
-         require $exercice;
+      case "exercice9":
+      case "exercice10":
+         if($exists_page){
+            require $exercice;
+         }else{
+            loadErrorPage("404");
+         }
          break;
       default:
          loadErrorPage("404");

@@ -114,8 +114,14 @@ pre,
   display: flex;
 }
 
+#menu-part-3:hover > .main-menu-part-3 {
+  cursor: pointer;
+  display: flex;
+}
+
 .main-menu-part-1,
-.main-menu-part-2 {
+.main-menu-part-2,
+.main-menu-part-3 {
   width: 100%;
   display: none;
   flex-direction: column;
@@ -126,14 +132,18 @@ pre,
   background-color: #fff;
   padding: 0.5em;
   position: absolute;
+  z-index:2;
 }
 .main-menu-part-1 .main-menu-items,
-.main-menu-part-2 .main-menu-items {
+.main-menu-part-2 .main-menu-items,
+.main-menu-part-3 .main-menu-items {
   width: 100%;
   text-align: center;
+  z-index:3;
 }
 .main-menu-part-1 .main-menu-items:hover,
-.main-menu-part-2 .main-menu-items:hover {
+.main-menu-part-2 .main-menu-items:hover,
+.main-menu-part-3 .main-menu-items:hover {
   text-decoration: underline;
   background-color: #d1d1d1;
 }
