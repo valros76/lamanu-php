@@ -24,7 +24,7 @@ ob_start();; ?>
       <button id="spoiler-toggle">Afficher le code PHP</button>
       <p class="important-para" id="spoiler">
          if ($var_a =! null) { <br />
-         //On affiche le contenu de $var_a
+         //On affiche le contenu de $var_a<br/>
          echo $var_a; <br />
          } else { <br />
          echo "Je suis une variable sans valeur"; <br />
