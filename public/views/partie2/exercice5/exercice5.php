@@ -9,25 +9,29 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Créer une variable de type int. L'initialiser avec rien. Afficher sa valeur avec la fonction var_dump.
-      Donner une valeur à cette variable et l'afficher.
+      Traduire ce code avec des if et des else :
+      <p class="important-para">
+      &lt?php<br/>
+      echo ($gender != 'Homme') ? 'C\'est une développeuse !!!' : 'C\'est un développeur !!!';<br/>
+      ?>
+      </pre>
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <p>Nom des variables : $inty</p>
-      <hr width="100%" />
-      <p>Contenu de la variable $inty, type int avec var_dump : <?= var_dump($inty) ?></p>
-      <p>Contenu de la variable $inty, type int avec une nouvelle valeur : <?php $inty = 12; echo $inty; ?></p>
-      <hr width="100%" />
-      <p>Localisation des variable : /public/includes/include_exercice5.php</p>
-      <p>Appel de l'include sur la page :
-      <pre>include $root."public/includes/include_exercice5.php";</pre>
+      <button id="spoiler-toggle">Afficher le code PHP</button>
+      <p class="important-para" id="spoiler">
+         if ($gender =! "Homme") { <br />
+         echo "C\'est une développeuse !!!"; <br />
+         } else { <br />
+         echo "C\'est un développeur !!!"; <br />
+         }
       </p>
    </article>
 </section>
 
 <?php
 $mainContent = ob_get_clean();
+$scripts = "<script src='public/sources/js/spoiler.js'></script>";
 require_once $root . "/public/templates/default_template.php";; ?>

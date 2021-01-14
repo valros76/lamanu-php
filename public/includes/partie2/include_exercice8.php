@@ -1,7 +1,6 @@
 <?php
-   $sum = 3 + 4;
-   $difference = 100 - 20;
-   $product = 45 * 15;
-   $quotient = 45 / 15;
-   $modulo = 75 % 15;
+   $number = 11;
+   function showConsigne($nbr){
+    echo ($nbr % 5 == 0 && $nbr % 3 == 0) ? 'FizzBuzz' : ($nbr % 3 == 0 ? 'Fizz' : ($nbr % 5 == 0 ? 'Buzz' : $nbr));
+   }
 ;?>

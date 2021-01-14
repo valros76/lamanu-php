@@ -9,25 +9,55 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Créer une variable de type string, une variable de type int, une variable de type float, une variable de type booléan et les initialiser avec une valeur de votre choix.
-      Les afficher.
+      L'échelle de Richter est un outil de mesure qui permet de définir la magnitude de moment d'un tremblement de terre. Cette échelle va de 1 à 9.
+      Créer une variable magnitude. Selon la valeur de magnitude, afficher la phrase correspondante.
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <p>Nom des variables : $sringy, $inty, $floaty, $booly</p>
-      <hr width="100%" />
-      <p>Contenu de la variable $stringy, type string : <?= $stringy ?></p>
-      <p>Contenu de la variable $inty, type int : <?= $inty ?></p>
-      <p>Contenu de la variable $floaty, type float : <?= $floaty ?></p>
-      <p>Contenu de la variable $booly, type booleen : <?= $booly ?></p>
-      <p>Contenu de la variable $booly, type booleen avec var_dump : <?= var_dump($booly) ?></p>
-      <hr width="100%" />
-      <p>Localisation des variable : /public/includes/include_exercice4.php</p>
-      <p>Appel de l'include sur la page :
-      <pre>include $root."public/includes/include_exercice4.php";</pre>
-      </p>
+      <p><em>Méthode 1</em></p>
+      <?php
+      foreach($magnitude as $force => $phrase){
+         echo "<p>".$force." - ".$phrase."</p>";
+      }
+      ;?>
+      <hr width="100%"/>
+      <p><em>Méthode 2</em></p>
+      <?php 
+         $init_magnitude = 3;
+         switch($init_magnitude){
+            case 1:
+               echo "<p>1 - ".$magnitude[$init_magnitude]."</p>";
+            break;
+            case 2:
+               echo "<p>2 - ".$magnitude[$init_magnitude]."</p>";
+            break;
+            case 3:
+               echo "<p>3 - ".$magnitude[$init_magnitude]."</p>";
+            break;
+            case 4:
+               echo "<p>4 - ".$magnitude[$init_magnitude]."</p>";
+            break;
+            case 5:
+               echo "<p>5 - ".$magnitude[$init_magnitude]."</p>";
+            break;
+            case 6:
+               echo "<p>6 - ".$magnitude[$init_magnitude]."</p>";
+            break;
+            case 7:
+               echo "<p>7 - ".$magnitude[$init_magnitude]."</p>";
+            break;
+            case 8:
+               echo "<p>8 - ".$magnitude[$init_magnitude]."</p>";
+            break;
+            case 9:
+               echo "<p>9 - ".$magnitude[$init_magnitude]."</p>";
+            break;
+            default:
+               echo "<p>Erreur : Aucune assignation de valeur</p>";
+         }
+      ;?>
    </article>
 </section>
 

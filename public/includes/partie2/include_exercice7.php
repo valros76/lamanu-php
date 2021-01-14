@@ -1,5 +1,6 @@
 <?php
-   $lastname = "Concepteur";
-   $firstname = "Webdevoo";
-   $age = 25;
+        $var_b = 'Je suis une variable qui à une valeur';
+        function showConsigne($value){
+         echo $value ?? 'Je suis une variable sans valeur';
+        }
 ;?>

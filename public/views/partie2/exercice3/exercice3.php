@@ -95,5 +95,5 @@ ob_start();; ?>
 </section>
 <?php
 $mainContent = ob_get_clean();
-$scripts = "<script src='public/sources/js/partie2_exercice3.js'></script>";
+$scripts = "<script src='public/sources/js/spoiler.js'></script>";
 require_once $root . "/public/templates/default_template.php";; ?>
