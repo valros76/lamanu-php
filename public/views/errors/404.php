@@ -9,7 +9,7 @@ ob_start();
       Erreur 404
    </h2>
    <p class="errors-sections-description">
-      Impossible de trouver le contenu.
+      Impossible de trouver le contenu demandé.
    </p>
 </section>
 
