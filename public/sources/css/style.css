@@ -31,8 +31,9 @@ hr {
 pre,
 .important-para {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  text-align:left;
   background-color: #fff;
   color: #252525;
   padding: 0.5em;

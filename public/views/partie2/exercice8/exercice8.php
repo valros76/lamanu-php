@@ -27,11 +27,13 @@ ob_start();; ?>
             echo "FizzBuzz"; <br />
          } else if($number % 3 == 0) { <br />
             echo "Fizz"; <br />
-         } else if($number % 5 == 0) { <br />
+         } else {<br/>
+            if($number % 5 == 0) { <br />
             echo "Buzz"; <br />
-         }else{
-            echo $number;
-         }
+         }else{ <br />
+            echo $number; <br />
+         }<br />
+      }
       </p>
    </article>
 </section>
