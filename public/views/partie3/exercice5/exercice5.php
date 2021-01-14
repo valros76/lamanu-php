@@ -1,5 +1,5 @@
 <?php
-include $root . "public/includes/partie2/include_exercice5.php";
+include $root . "public/includes/partie3/include_exercice5.php";
 $pageTitle = "Exercice 5 - P3 - PHP";
 $headTitle = "Exercice 5 - P3";
 ob_start();; ?>

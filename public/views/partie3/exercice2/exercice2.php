@@ -1,5 +1,5 @@
 <?php
-include $root . "public/includes/partie2/include_exercice2.php";
+include $root . "public/includes/partie3/include_exercice2.php";
 $pageTitle = "Exercice 2 - P3 - PHP";
 $headTitle = "Exercice 2 - P2";
 ob_start();; ?>
@@ -9,26 +9,21 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Créer une variable isEasy de type booléan et l'initialiser avec une valeur.
-      Afficher C'est facile !! si c'est vrai. Dans le cas contraire afficher C'est difficile !!!.
+      Créer deux variables. Initialiser la première à 0 et la deuxième avec un nombre compris en 1 et 100.
+      Tant que la première variable n'est pas supérieure à 20 :
+      - multiplier la première variable avec la deuxième
+      - afficher le résultat
+      - incrementer la première variable
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
       <?php
-         switch($isEasy){
-            case true:
-               echo "C'est facile !!";
-            break;
-            case false:
-            default:
-               echo "C'est difficile !!!";
-         }
+      for($num1;$num1 <= 20; $num1++){
+         echo "Resultat ".$num1." : ".($num1 * $num2)."<br/>";
+      }
       ;?>
-      <hr width="100%" />
-      <p>Valeur de la variable, avec var_dump : <?= var_dump($isEasy);?></p>
-      <p>Valeur de la variable, sans var_dump : <?= $isEasy;?></p>
    </article>
 </section>
 

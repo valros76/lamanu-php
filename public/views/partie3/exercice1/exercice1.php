@@ -1,5 +1,5 @@
 <?php
-include $root . "public/includes/partie2/include_exercice1.php";
+include $root . "public/includes/partie3/include_exercice1.php";
 $pageTitle = "Exercice 1 - P3 - PHP";
 $headTitle = "Exercice 1 - P3";
 ob_start();; ?>
@@ -9,22 +9,20 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Créer une variable age et l'initialiser avec une valeur.
-      Si l'âge est supérieur ou égale à 18, afficher Vous êtes majeur. Dans le cas contraire, afficher Vous êtes mineur.
+      Créer une variable et l'initialiser à 0.
+      Tant que cette variable n'atteint pas 10, il faut :
+      - l'afficher
+      - l'incrementer
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
       <?php
-         if($age > 18){
-            echo "Vous êtes majeur. ";
-         }else{
-            echo "Vous êtes mineur. ";
+         for($count;$count <= 10; $count++){
+            echo "Tour ".$count." - ".$count."<br/>";
          }
       ;?>
-      <p>Valeur de la variable : <?= var_dump($age);?></p>
-   </article>
 </section>
 
 <?php
