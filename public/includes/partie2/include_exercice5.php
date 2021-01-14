@@ -1,0 +1,3 @@
+<?php
+   $inty = (int) null;
+;?>

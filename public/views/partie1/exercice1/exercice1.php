@@ -1,6 +1,6 @@
 <?php
-include $root."public/includes/include_exercice1.php";
-$pageTitle = "Exercice 1 - PHP";
+include $root."public/includes/partie1/include_exercice1.php";
+$pageTitle = "Exercice 1 - P1 - PHP";
 $headTitle = "Exercice 1";
 ob_start();
 ;?>

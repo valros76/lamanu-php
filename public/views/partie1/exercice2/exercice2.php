@@ -1,7 +1,7 @@
 <?php
-include $root . "public/includes/include_exercice2.php";
-$pageTitle = "Exercice 2 - PHP";
-$headTitle = "Exercice 2";
+include $root . "public/includes/partie1/include_exercice2.php";
+$pageTitle = "Exercice 2 - P1 - PHP";
+$headTitle = "Exercice 2 - P1";
 ob_start();; ?>
 
 <section class="main-sections">

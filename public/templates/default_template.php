@@ -12,48 +12,7 @@
          <?= $headTitle ?? "PHP";?>
       </h1>
       <nav class="main-nav">
-         <ul class="main-menu">
-            <li class="main-menu-items">
-               <a href="?page=exercice1" class="main-menu-links">
-               Exercice 1
-               </a>
-            </li>
-            <li class="main-menu-items">
-               <a href="?page=exercice2" class="main-menu-links">
-               Exercice 2
-               </a>
-            </li>
-            <li class="main-menu-items">
-               <a href="?page=exercice3" class="main-menu-links">
-               Exercice 3
-               </a>
-            </li>
-            <li class="main-menu-items">
-               <a href="?page=exercice4" class="main-menu-links">
-               Exercice 4
-               </a>
-            </li>
-            <li class="main-menu-items">
-               <a href="?page=exercice5" class="main-menu-links">
-               Exercice 5
-               </a>
-            </li>
-            <li class="main-menu-items">
-               <a href="?page=exercice6" class="main-menu-links">
-               Exercice 6
-               </a>
-            </li>
-            <li class="main-menu-items">
-               <a href="?page=exercice7" class="main-menu-links">
-               Exercice 7
-               </a>
-            </li>
-            <li class="main-menu-items">
-               <a href="?page=exercice8" class="main-menu-links">
-               Exercice 8
-               </a>
-            </li>
-         </ul>
+         <?php require $root."/public/templates/parts/menu/main-menu.html";?>
       </nav>
    </header>
    <main class="main-content">
@@ -68,5 +27,6 @@
          </section>
       ";?>
    </main>
+   <?= $scripts ?? "";?>
 </body>
 </html>

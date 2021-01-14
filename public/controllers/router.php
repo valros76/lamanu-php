@@ -23,6 +23,25 @@ function loadPage($page)
    }
 }
 
+function loadExercice($part,$page){
+   global $root;
+   $exercice = $root . "/public/views/" . $part . "/" . $page . "/" . $page . ".php";
+   switch ($page) {
+      case "exercice1":
+      case "exercice2":
+      case "exercice3":
+      case "exercice4":
+      case "exercice5":
+      case "exercice6":
+      case "exercice7":
+      case "exercice8":
+         require $exercice;
+         break;
+      default:
+         loadErrorPage("404");
+   }
+}
+
 function loadErrorPage($err_page)
 {
    global $root;
