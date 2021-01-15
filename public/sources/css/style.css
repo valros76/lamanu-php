@@ -19,6 +19,10 @@ body {
   font-size: 10px;
 }
 
+p{
+  word-wrap:break-word;
+}
+
 ul,
 ol {
   list-style: none;
@@ -105,24 +109,30 @@ pre,
   font-weight: 500;
 }
 
-#menu-part-1:hover > .main-menu-part-1 {
-  cursor: pointer;
-  display: flex;
-}
-
-#menu-part-2:hover > .main-menu-part-2 {
-  cursor: pointer;
-  display: flex;
-}
-
-#menu-part-3:hover > .main-menu-part-3 {
+#menu-part-1:hover > .main-menu-part-1,
+#menu-part-2:hover > .main-menu-part-2,
+#menu-part-3:hover > .main-menu-part-3,
+#menu-part-4:hover > .main-menu-part-4,
+#menu-part-5:hover > .main-menu-part-5,
+#menu-part-6:hover > .main-menu-part-6,
+#menu-part-7:hover > .main-menu-part-7,
+#menu-part-8:hover > .main-menu-part-8,
+#menu-part-9:hover > .main-menu-part-9,
+#menu-part-10:hover > .main-menu-part-10 {
   cursor: pointer;
   display: flex;
 }
 
 .main-menu-part-1,
 .main-menu-part-2,
-.main-menu-part-3 {
+.main-menu-part-3,
+.main-menu-part-4,
+.main-menu-part-5,
+.main-menu-part-6,
+.main-menu-part-7,
+.main-menu-part-8,
+.main-menu-part-9,
+.main-menu-part-10 {
   width: 100%;
   display: none;
   flex-direction: column;
@@ -137,14 +147,28 @@ pre,
 }
 .main-menu-part-1 .main-menu-items,
 .main-menu-part-2 .main-menu-items,
-.main-menu-part-3 .main-menu-items {
+.main-menu-part-3 .main-menu-items,
+.main-menu-part-4 .main-menu-items,
+.main-menu-part-5 .main-menu-items,
+.main-menu-part-6 .main-menu-items,
+.main-menu-part-7 .main-menu-items,
+.main-menu-part-8 .main-menu-items,
+.main-menu-part-9 .main-menu-items,
+.main-menu-part-10 .main-menu-items {
   width: 100%;
   text-align: center;
   z-index:3;
 }
 .main-menu-part-1 .main-menu-items:hover,
 .main-menu-part-2 .main-menu-items:hover,
-.main-menu-part-3 .main-menu-items:hover {
+.main-menu-part-3 .main-menu-items:hover,
+.main-menu-part-4 .main-menu-items:hover,
+.main-menu-part-5 .main-menu-items:hover,
+.main-menu-part-6 .main-menu-items:hover,
+.main-menu-part-7 .main-menu-items:hover,
+.main-menu-part-8 .main-menu-items:hover,
+.main-menu-part-9 .main-menu-items:hover,
+.main-menu-part-10 .main-menu-items:hover {
   text-decoration: underline;
   background-color: #d1d1d1;
 }
