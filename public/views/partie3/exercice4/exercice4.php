@@ -9,53 +9,18 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      L'échelle de Richter est un outil de mesure qui permet de définir la magnitude de moment d'un tremblement de terre. Cette échelle va de 1 à 9.
-      Créer une variable magnitude. Selon la valeur de magnitude, afficher la phrase correspondante.
+      Créer une variable et l'initialiser à 1.<br/>
+      Tant que cette variable n'atteint pas 10, il faut :<br/>
+      - l'afficher<br/>
+      - l'incrementer de la moitié de sa valeur
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <p><em>Méthode 1</em></p>
-      <?php
-      foreach($magnitude as $force => $phrase){
-         echo "<p>".$force." - ".$phrase."</p>";
-      }
-      ;?>
-      <hr width="100%"/>
-      <p><em>Méthode 2</em></p>
       <?php 
-         $init_magnitude = 3;
-         switch($init_magnitude){
-            case 1:
-               echo "<p>1 - ".$magnitude[$init_magnitude]."</p>";
-            break;
-            case 2:
-               echo "<p>2 - ".$magnitude[$init_magnitude]."</p>";
-            break;
-            case 3:
-               echo "<p>3 - ".$magnitude[$init_magnitude]."</p>";
-            break;
-            case 4:
-               echo "<p>4 - ".$magnitude[$init_magnitude]."</p>";
-            break;
-            case 5:
-               echo "<p>5 - ".$magnitude[$init_magnitude]."</p>";
-            break;
-            case 6:
-               echo "<p>6 - ".$magnitude[$init_magnitude]."</p>";
-            break;
-            case 7:
-               echo "<p>7 - ".$magnitude[$init_magnitude]."</p>";
-            break;
-            case 8:
-               echo "<p>8 - ".$magnitude[$init_magnitude]."</p>";
-            break;
-            case 9:
-               echo "<p>9 - ".$magnitude[$init_magnitude]."</p>";
-            break;
-            default:
-               echo "<p>Erreur : Aucune assignation de valeur</p>";
+         for($num1;$num1 <= 10;$num1 += ($num1*0.5)){
+            echo $num1."<br/>";
          }
       ;?>
    </article>

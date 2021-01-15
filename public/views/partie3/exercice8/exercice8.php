@@ -9,30 +9,19 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Traduire ce code avec des if et des else :
-   <p class="important-para">
-      &lt?php<br/>
-      $number = 11;<br/>
-      echo ($number % 5 == 0 && $number % 3 == 0) ? 'FizzBuzz' : ($number % 3 == 0 ? 'Fizz' : ($number % 5 == 0 ? 'Buzz' : $number));
-      ?>
-      </pre>
+      En allant de 0 à 100 avec un pas de 1, afficher tous ceux qui ne sont pas multiple de 3.
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <button id="spoiler-toggle">Afficher le code PHP</button>
-      <p class="important-para" id="spoiler">
-         if ($number % 5 == 0 && $number % 3 == 0) { <br />
-            echo "FizzBuzz"; <br />
-         } else if($number % 3 == 0) { <br />
-            echo "Fizz"; <br />
-         } else if($number % 5 == 0) { <br />
-            echo "Buzz"; <br />
-         }else{
-            echo $number;
+      <?php
+         for($count;$count<=100;$count++){
+            if($count%3){
+               echo $count."<br/>";
+            }
          }
-      </p>
+      ;?>
    </article>
 </section>
 

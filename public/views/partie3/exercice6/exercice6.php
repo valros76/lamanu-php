@@ -9,27 +9,17 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Traduire ce code avec des if et des else :
-   <p class="important-para">
-      &lt?php<br/>
-      $var_a = null;<br/>
-      echo $var_a ?: 'Je suis une variable sans valeur';<br/>
-      ?>
-      </pre>
+      En allant de 20 à 0 avec un pas de 1, afficher le message C'est presque bon.
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <button id="spoiler-toggle">Afficher le code PHP</button>
-      <p class="important-para" id="spoiler">
-         if ($var_a =! null) { <br />
-         //On affiche le contenu de $var_a
-         echo $var_a; <br />
-         } else { <br />
-         echo "Je suis une variable sans valeur"; <br />
+      <?php
+         for($count = 20;$count >= 0; $count--){
+            echo $message;
          }
-      </p>
+      ;?>
    </article>
 </section>
 

@@ -1,4 +1,4 @@
 <?php
-   $age = (int) 21;
-   $gender = (string) "Femme";
+   $num1 = 100;
+   $num2 = 12;
 ;?>

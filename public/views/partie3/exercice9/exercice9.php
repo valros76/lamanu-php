@@ -1,5 +1,5 @@
 <?php
-include $root . "public/includes/partie3/include_exercice8.php";
+include $root . "public/includes/partie3/include_exercice9.php";
 $pageTitle = "Exercice 9 - P3 - PHP";
 $headTitle = "Exercice 9 - P3";
 ob_start();; ?>
@@ -9,30 +9,24 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Traduire ce code avec des if et des else :
-   <p class="important-para">
-      &lt?php<br/>
-      $number = 11;<br/>
-      echo ($number % 5 == 0 && $number % 3 == 0) ? 'FizzBuzz' : ($number % 3 == 0 ? 'Fizz' : ($number % 5 == 0 ? 'Buzz' : $number));
-      ?>
-      </pre>
+      Créer une variable nombre aléatoire et l'initialiser avec un nombre aléatoire compris entre 0 et 30.<br/>
+      En allant de 1 à 100 avec un pas de 1, afficher les nombres jusqu'au nombre aléatoire, puis sortir de la boucle.
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <button id="spoiler-toggle">Afficher le code PHP</button>
-      <p class="important-para" id="spoiler">
-         if ($number % 5 == 0 && $number % 3 == 0) { <br />
-            echo "FizzBuzz"; <br />
-         } else if($number % 3 == 0) { <br />
-            echo "Fizz"; <br />
-         } else if($number % 5 == 0) { <br />
-            echo "Buzz"; <br />
-         }else{
-            echo $number;
+      <?php
+         for($i = 1;$i  <= 100;$i++){
+            if($i <= $count){
+               echo $i."<br/>";
+               continue;
+            }else{
+               echo "Count = ".$count;
+               break;
+            }
          }
-      </p>
+      ;?>
    </article>
 </section>
 

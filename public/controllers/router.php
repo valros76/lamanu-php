@@ -8,15 +8,6 @@ function loadPage($page)
       case "home":
          require $root . "/public/views/home.php";
          break;
-      case "exercice1":
-      case "exercice2":
-      case "exercice3":
-      case "exercice4":
-      case "exercice5":
-      case "exercice6":
-      case "exercice7":
-      case "exercice8":
-         break;
       default:
          loadErrorPage("404");
    }

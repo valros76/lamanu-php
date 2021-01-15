@@ -92,6 +92,7 @@ ob_start();; ?>
                echo "<p>Erreur</p>";
          }
       }; ?>
+   </article>
 </section>
 <?php
 $mainContent = ob_get_clean();

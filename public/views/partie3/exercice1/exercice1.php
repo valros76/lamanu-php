@@ -23,6 +23,7 @@ ob_start();; ?>
             echo "Tour ".$count." - ".$count."<br/>";
          }
       ;?>
+   </article>
 </section>
 
 <?php

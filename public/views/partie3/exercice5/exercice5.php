@@ -9,25 +9,17 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Traduire ce code avec des if et des else :
-      <p class="important-para">
-      &lt?php<br/>
-      echo ($gender != 'Homme') ? 'C\'est une développeuse !!!' : 'C\'est un développeur !!!';<br/>
-      ?>
-      </pre>
+   En allant de 1 à 15 avec un pas de 1, afficher le message On y arrive presque.
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <button id="spoiler-toggle">Afficher le code PHP</button>
-      <p class="important-para" id="spoiler">
-         if ($gender =! "Homme") { <br />
-         echo "C\'est une développeuse !!!"; <br />
-         } else { <br />
-         echo "C\'est un développeur !!!"; <br />
+      <?php 
+         for($count = 1;$count <= 15;$count++){
+            echo $message;
          }
-      </p>
+      ;?>
    </article>
 </section>
 
