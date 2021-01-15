@@ -1,7 +1,7 @@
 <?php
-include $root . "public/includes/partie3/include_exercice5.php";
-$pageTitle = "Exercice 5 - P3 - PHP";
-$headTitle = "Exercice 5 - P3";
+include $root . "public/includes/partie5/include_exercice8.php";
+$pageTitle = "Exercice 8 - P5 - PHP";
+$headTitle = "Exercice 8 - P5";
 ob_start();; ?>
 
 <section class="main-sections">
@@ -9,16 +9,15 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-   En allant de 1 à 15 avec un pas de 1, afficher le message On y arrive presque.
+      Avec le tableau de l'exercice 1 et une boucle, afficher toutes les valeurs de ce tableau.
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <?php 
-      //$message = 'On y arrive presque';
-         for($count = 1;$count <= 15;$count += 1){
-            echo $message;
+      <?php
+         foreach($departements as $dep => $dep_name){
+            echo "<p>".$dep." : ".$dep_name."</p>";
          }
       ;?>
    </article>

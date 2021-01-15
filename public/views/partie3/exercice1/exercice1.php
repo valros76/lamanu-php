@@ -19,6 +19,7 @@ ob_start();; ?>
          Rendu visuel
       </h3>
       <?php
+      //$count = 0
          for($count;$count <= 10; $count++){
             echo "Tour ".$count." - ".$count."<br/>";
          }

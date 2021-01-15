@@ -19,6 +19,7 @@ ob_start();; ?>
          Rendu visuel
       </h3>
       <?php 
+      //Ou $num1 *= 1.5;
          for($num1;$num1 <= 10;$num1 += ($num1*0.5)){
             echo $num1."<br/>";
          }

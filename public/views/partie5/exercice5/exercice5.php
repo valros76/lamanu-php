@@ -1,7 +1,7 @@
 <?php
-include $root . "public/includes/partie3/include_exercice5.php";
-$pageTitle = "Exercice 5 - P3 - PHP";
-$headTitle = "Exercice 5 - P3";
+include $root . "public/includes/partie5/include_exercice5.php";
+$pageTitle = "Exercice 5 - P5 - PHP";
+$headTitle = "Exercice 5 - P5";
 ob_start();; ?>
 
 <section class="main-sections">
@@ -9,18 +9,14 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-   En allant de 1 à 15 avec un pas de 1, afficher le message On y arrive presque.
+      Créer un tableau associatif avec comme index le numéro des départements des Hauts de France et en valeur leur nom.
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <?php 
-      //$message = 'On y arrive presque';
-         for($count = 1;$count <= 15;$count += 1){
-            echo $message;
-         }
-      ;?>
+      <?php
+      var_dump($departements);; ?>
    </article>
 </section>
 
