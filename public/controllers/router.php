@@ -29,6 +29,7 @@ function loadExercice($part, $page)
       case "exercice8":
       case "exercice9":
       case "exercice10":
+      case "tp":
          if ($exists_page) {
             require $exercice;
          } else {
@@ -57,6 +58,7 @@ function loadUserPage($part, $page, $userpage = null)
          case "exercice8":
          case "exercice9":
          case "exercice10":
+         case "tp":
             if ($exists_page) {
                require $userpage;
             } else {
@@ -66,7 +68,7 @@ function loadUserPage($part, $page, $userpage = null)
          default:
             loadErrorPage("404");
       }
-   } else{
+   } else {
       $profile_page = $root . "/public/views/" . $part . "/" . $page . "/" . $userpage . ".php";
       $exists_page = file_exists($profile_page);
       switch ($userpage) {
@@ -83,7 +85,8 @@ function loadUserPage($part, $page, $userpage = null)
    }
 }
 
-function loadOtherPage($part,$page,$otherpage){
+function loadOtherPage($part, $page, $otherpage)
+{
    global $root;
    $page_path = $root . "/public/views/" . $part . "/" . $page . "/" . $otherpage . ".php";
    switch ($otherpage) {
