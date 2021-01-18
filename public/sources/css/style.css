@@ -318,6 +318,14 @@ form input[type="submit"]:active{
   inset -4px -4px 4px -1px #fff;
 }
 
+.file-errors{
+  color:crimson;
+}
+
+.confirm-action{
+  color:lightgreen;
+}
+
 @media all and (max-width:960px){
 form input{
   grid-column:2/-2;

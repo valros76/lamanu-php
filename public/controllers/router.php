@@ -29,9 +29,9 @@ function loadExercice($part, $page)
       case "exercice8":
       case "exercice9":
       case "exercice10":
-         if($exists_page){
+         if ($exists_page) {
             require $exercice;
-         }else{
+         } else {
             loadErrorPage("404");
          }
          break;
@@ -40,29 +40,46 @@ function loadExercice($part, $page)
    }
 }
 
-function loadUserPage($part,$page){
+function loadUserPage($part, $page, $userpage = null)
+{
    global $root;
-   $userpage = $root . "/public/views/" . $part . "/" . $page . "/user.php";
-   $exists_page = file_exists($userpage);
-   switch ($page) {
-      case "exercice1":
-      case "exercice2":
-      case "exercice3":
-      case "exercice4":
-      case "exercice5":
-      case "exercice6":
-      case "exercice7":
-      case "exercice8":
-      case "exercice9":
-      case "exercice10":
-         if($exists_page){
-            require $userpage;
-         }else{
+   if (!isset($userpage) || empty($userpage) && $userpage != "profile") {
+      $userpage = $root . "/public/views/" . $part . "/" . $page . "/user.php";
+      $exists_page = file_exists($userpage);
+      switch ($page) {
+         case "exercice1":
+         case "exercice2":
+         case "exercice3":
+         case "exercice4":
+         case "exercice5":
+         case "exercice6":
+         case "exercice7":
+         case "exercice8":
+         case "exercice9":
+         case "exercice10":
+            if ($exists_page) {
+               require $userpage;
+            } else {
+               loadErrorPage("404");
+            }
+            break;
+         default:
             loadErrorPage("404");
-         }
-         break;
-      default:
-         loadErrorPage("404");
+      }
+   } else{
+      $profile_page = $root . "/public/views/" . $part . "/" . $page . "/" . $userpage . ".php";
+      $exists_page = file_exists($profile_page);
+      switch ($userpage) {
+         case "profilep6ex9":
+            if ($exists_page) {
+               require $profile_page;
+            } else {
+               loadErrorPage("404");
+            }
+            break;
+         default:
+            loadErrorPage("404");
+      }
    }
 }
 
@@ -73,5 +90,17 @@ function loadErrorPage($err_page)
       case "404":
       default:
          require $root . "/public/views/errors/404.php";
+   }
+}
+
+function launchAction($action)
+{
+   global $root;
+   switch ($action) {
+      case "p6ex9":
+         require $root . "/public/controllers/actions/p6ex9.php";
+         break;
+      default:
+         loadErrorPage("404");
    }
 }
