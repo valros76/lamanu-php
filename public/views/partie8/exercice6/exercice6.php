@@ -3,7 +3,7 @@ include $root . "public/includes/partie8/include_exercice6.php";
 $pageTitle = "Exercice 6 - P8 - PHP";
 $headTitle = "Exercice 6 - P8";
 setlocale(LC_TIME, "fr");
-$nb_days = $number = cal_days_in_month(CAL_GREGORIAN, 2, 2016);;
+$nb_days = $number = cal_days_in_month(CAL_GREGORIAN, 2, 2016);
 ob_start();; ?>
 
 <section class="main-sections">
