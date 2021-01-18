@@ -6,9 +6,10 @@ if(isset($_POST) && !empty($_POST)){
    $username = isset($_POST["username"]) && !empty($_POST["username"]) ? $_POST["username"] : "";
    $password = isset($_POST["password"]) && !empty($_POST["password"]) ? password_hash($_POST["password"], PASSWORD_DEFAULT) : "";
    if(!empty($username) && !empty($password)){
-      $_COOKIES["username"] = $username;
-      $_COOKIES["password"] = $password;
+      setcookie("username", $username, time()+60);
+      setcookie("password", $password, time()+60);
       //NE JAMAIS REPRODUIRE LA LIGNE DU DESSUS !!! 😱
+      //Cookie time : 60 secondes
    }
 }
 ob_start();; ?>
