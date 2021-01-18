@@ -221,3 +221,116 @@ pre,
 .main-articles-title {
   width: 100%;
 }
+
+form{
+  width:calc(100% - 2em);
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:minmax(5px, auto);
+  grid-auto-flow:row dense;
+  gap:0.5em;
+  padding:0.25em;
+  background-color:#dec7cb;
+  border-radius:5px;
+  box-shadow:
+    0px 0px 2px -1px #000,
+    0px 1px 2px -1px #000,
+    0px 2px 4px -2px #000;
+}
+form label{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  grid-column:1/-1;
+  font-family:monospace;
+  font-size:1.05em;
+}
+form select{
+  width:100%;
+  min-height:5vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  text-align-last:center;
+  padding:1em;
+  grid-column:4 /-4;
+  border:none;
+  border-radius:5px;
+  font-family:monospace;
+  font-size:1.05em;
+  font-weight:700;
+}
+form fieldset{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:minmax(5px, auto);
+  grid-auto-flow:row dense;
+  gap:0.5em;
+  grid-column:1 /-1;
+}
+form fieldset legend{
+  width:calc(100% - 0.5em);
+  border:none;
+  grid-column:1/-1;
+}
+form input{
+  width:100%;
+  min-height:5vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:1em;
+  grid-column:4 /-4;
+  border:none;
+  border-radius:5px;
+  font-family:monospace;
+  font-size:1.05em;
+}
+form input[type="submit"]{
+  grid-column:6 /-6;
+  padding:0.10em 0.15em;
+  background-color:#ff7062;
+  color:#fff;
+  font-size:1.15em;
+  box-shadow:
+  0px 0px 2px -1px #252525,
+  0px 0px 4px -1px #252525;
+  outline:none;
+}
+form input[type="submit"]:hover{
+  cursor:pointer;
+  background-color:#fd5f51;
+  box-shadow:
+  0px 0px 2px -1px #252525,
+  0px 0px 3px 0px #252525;
+}
+form input[type="submit"]:active{
+  box-shadow:
+  0px 0px 2px -1px #25252575,
+  0px 0px 4px -1px #25252575,
+  inset 0px 0px 4px -1px #ffffff33,
+  inset 0px 0px 4px -1px #252525,
+  inset 4px 4px 4px -1px #252525,
+  inset -4px -4px 4px -1px #fff;
+}
+
+@media all and (max-width:960px){
+form input{
+  grid-column:2/-2;
+}
+form input[type="submit"]{
+  grid-column:3 /-3;
+}
+}
+@media all and (max-width:720px){
+  form input{
+    grid-column:2/-2;
+  }
+  form input[type="submit"]{
+    grid-column:4 /-4;
+  }
+}

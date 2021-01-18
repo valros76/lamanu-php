@@ -40,6 +40,32 @@ function loadExercice($part, $page)
    }
 }
 
+function loadUserPage($part,$page){
+   global $root;
+   $userpage = $root . "/public/views/" . $part . "/" . $page . "/user.php";
+   $exists_page = file_exists($userpage);
+   switch ($page) {
+      case "exercice1":
+      case "exercice2":
+      case "exercice3":
+      case "exercice4":
+      case "exercice5":
+      case "exercice6":
+      case "exercice7":
+      case "exercice8":
+      case "exercice9":
+      case "exercice10":
+         if($exists_page){
+            require $userpage;
+         }else{
+            loadErrorPage("404");
+         }
+         break;
+      default:
+         loadErrorPage("404");
+   }
+}
+
 function loadErrorPage($err_page)
 {
    global $root;
