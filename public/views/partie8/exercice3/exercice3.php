@@ -13,14 +13,15 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Afficher la date courante en respectant la forme jj-mm-aa (ex : 16-05-16).
+      Afficher la date courante avec le jour de la semaine et le mois en toutes lettres (ex : mardi 2 août 2016)<br/>
+      Bonus : Le faire en français.
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
       <p>
-         Date du jour (DE) : <?= $date_de; ?><br/>
+         Date du jour (DE) : <?= $date_de; ?><br />
          Date du jour (FR) : <?= $date_fr; ?>
       </p>
    </article>
