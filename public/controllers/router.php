@@ -83,6 +83,18 @@ function loadUserPage($part, $page, $userpage = null)
    }
 }
 
+function loadOtherPage($part,$page,$otherpage){
+   global $root;
+   $page_path = $root . "/public/views/" . $part . "/" . $page . "/" . $otherpage . ".php";
+   switch ($otherpage) {
+      case "page2":
+         require $page_path;
+         break;
+      default:
+         loadErrorPage("404");
+   }
+}
+
 function loadErrorPage($err_page)
 {
    global $root;

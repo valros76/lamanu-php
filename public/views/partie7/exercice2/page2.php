@@ -3,11 +3,8 @@ if(session_status() == PHP_SESSION_NONE){
    session_start();
 }
 include $root . "public/includes/partie7/include_exercice2.php";
-$pageTitle = "Exercice 2 - P7 - PHP";
-$headTitle = "Exercice 2 - P7";
-$_SESSION["lastname"] = "Concepteur";
-$_SESSION["firstname"] = "Webdevoo";
-$_SESSION["age"] = "25";
+$pageTitle = "Exercice 2 - Page 2 - P7 - PHP";
+$headTitle = "Exercice 2 - Page 2 - P7";
 ob_start();; ?>
 
 <section class="main-sections">
@@ -25,8 +22,11 @@ ob_start();; ?>
          Rendu visuel
       </h3>
       <p>
-         Passage à la page 2 avec données stockées en session.<br/>
-         <a href="?part=partie7&page=exercice2&otherpage=page2">Aller sur la page 2</a>
+         Affichage des données en session : <br/>
+         Lastname : <?= $_SESSION["lastname"];?><br/>
+         Firstname : <?= $_SESSION["firstname"];?><br/>
+         Âge : <?= $_SESSION["age"];?><br/>
+         <a href="?part=partie7&page=exercice2">Aller sur la page 1</a>
       </p>
    </article>
 </section>
