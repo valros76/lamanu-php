@@ -3,7 +3,7 @@ include $root . "public/includes/partie8/include_exercice7.php";
 $pageTitle = "Exercice 7 - P8 - PHP";
 $headTitle = "Exercice 7 - P8";
 setlocale(LC_TIME, "fr");
-$date_fr = date("d/m/Y",strtotime("-22 days"));
+$date_fr = date("d/m/Y",strtotime("+20 days"));
 ob_start();; ?>
 
 <section class="main-sections">
@@ -11,14 +11,14 @@ ob_start();; ?>
       Consigne
    </h2>
    <p class="main-sections-description">
-      Afficher la date du jour - 22 jours.
+      Afficher la date du jour + 20 jours.
    </p>
    <article class="main-articles">
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
       <p>
-         Date du jour (-22 jours) : <?= $date_fr; ?>
+         Date du jour (+20 jours) : <?= $date_fr; ?>
       </p>
    </article>
 </section>
