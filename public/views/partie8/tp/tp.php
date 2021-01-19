@@ -62,6 +62,7 @@ ob_start();; ?>
          </select>
          <input type="submit" value="Afficher">
       </form>
+      <p>Cliquez sur les jours du mois pour lire aléatoirement une phrase de parisien (31 phrases à découvrir).</p>
       <?php if (!empty($month) && !empty($year)) {; ?>
          <div class="calendar-container">
             <table class="calendar">
