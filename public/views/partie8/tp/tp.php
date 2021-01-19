@@ -7,7 +7,22 @@ $month = isset($_POST["month"]) && !empty($_POST["month"]) ? (int) $_POST["month
 $year = isset($_POST["year"]) && !empty($_POST["year"]) ? (int) $_POST["year"] : "";
 $format = $year . "-" . $month . "-1";
 $pick_date = strtotime($format);
-$nb_days = $number = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+$days_in_cal = (int) 35;
+$days = [
+   "lundi",
+   "mardi",
+   "mercredi",
+   "jeudi",
+   "vendredi",
+   "samedi",
+   "dimanche"
+];
+if (!empty($year) && !empty($month)) {
+   $nb_days = $number = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+   $format_last = $year . "-" . $month . "-" . $nb_days;
+   $first_day = strftime("%A", strtotime($format));
+   $last_day = strftime("%A", strtotime($format_last));
+}
 ob_start();; ?>
 
 <section class="main-sections">
@@ -49,89 +64,52 @@ ob_start();; ?>
       </form>
       <?php if (!empty($month) && !empty($year)) {; ?>
          <div class="calendar-container">
-            <table>
-               <caption>
+            <table class="calendar">
+               <caption id="calendar-date">
                   <?= utf8_encode(ucfirst(strftime("%B", $pick_date) . " " . strftime("%G", $pick_date))) ?>
-                  <p>Premier jour du mois : <?= utf8_encode(strftime("%A", date($pick_date)));; ?></p>
                </caption>
                <thead>
                   <tr>
-                     <th>Lundi</th>
-                     <th>Mardi</th>
-                     <th>Mercredi</th>
-                     <th>Jeudi</th>
-                     <th>Vendredi</th>
-                     <th>Samedi</th>
-                     <th>Dimanche</th>
+                     <?php
+                     foreach ($days as $day) {
+                        echo '<th>' . ucfirst($day) . '</th>';
+                     }; ?>
                   </tr>
                </thead>
                <tbody>
                   <?php
-                  for ($i = 1; $i <= $nb_days; $i++) {
-                     if($i >= 1 && $i <= 7){
+                  if (isset($nb_days) && !empty($nb_days)) {
+                     $week = 1;
+                     $before_first_day = true;
+                     $after_last_day = false;
+                     for ($i = 1; $i <= $nb_days; $i++) {
                         echo '<tr>';
-                        echo '<td>' . $i . '</td>';
-                     }else{
+                        for ($count = 1; $count <= count($days); $count++) {
+                           $iteration = $count;
+                           if ($iteration === count($days) && $week <= 4) {
+                              $week++;
+                           }
+                           if ($before_first_day === true) {
+                              if ($days[$iteration-1] === $first_day) {
+                                 echo '<td class="calendar-days" data-day='.$days[$iteration-1].'>' . $i . '</td>';
+                                 $i++;
+                                 $before_first_day = false;
+                              } else {
+                                 echo '<td class="null-days">&nbsp;</td>';
+                              }
+                           } else {
+                              if($i <= $nb_days && $iteration < count($days)){
+                                 echo '<td class="calendar-days" data-day='.$days[$iteration-1].'>' . $i . '</td>';
+                                 $i++;
+                              }else if($i <= $nb_days && $iteration === count($days)){
+                                 echo '<td class="calendar-days" data-day='.$days[$iteration-1].'>' . $i . '</td>';
+                              }else{
+                                 echo '<td class="null-days">&nbsp;</td>';
+                              }
+                           }
+                        }
                         echo '</tr>';
                      }
-                     // switch (true) {
-                     //    case ($i === 1):
-                     //       echo '<tr>';
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    case ($i <= 6):
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    case ($i === 7):
-                     //       echo '<td>' . $i . '</td>';
-                     //       echo '</tr>';
-                     //       break;
-                     //    case ($i === 8):
-                     //       echo '<tr>';
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    case ($i > 8 && $i <= 13):
-                     //       echo '</tr>';
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    case ($i === 14):
-                     //       echo '<td>' . $i . '</td>';
-                     //       echo '</tr>';
-                     //       break;
-                     //    case ($i === 15):
-                     //       echo '<tr>';
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    case ($i > 15 && $i <= 20):
-                     //       echo '</tr>';
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    case ($i === 21):
-                     //       echo '<td>' . $i . '</td>';
-                     //       echo '</tr>';
-                     //       break;
-                     //    case ($i === 22):
-                     //       echo '<tr>';
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    case ($i > 22 && $i <= 27):
-                     //       echo '</tr>';
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    case ($i === 28):
-                     //       echo '<td>' . $i . '</td>';
-                     //       echo '</tr>';
-                     //       break;
-                     //    case ($i > 29 && $i <= 30):
-                     //       echo '</tr>';
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    case ($i === 31):
-                     //       echo '</tr>';
-                     //       echo '<td>' . $i . '</td>';
-                     //       break;
-                     //    default:
-                     // }
                   }; ?>
                </tbody>
             </table>
@@ -142,4 +120,5 @@ ob_start();; ?>
 
 <?php
 $mainContent = ob_get_clean();
+$scripts = '<script src="/public/sources/js/calendar.js"></script>';
 require_once $root . "/public/templates/default_template.php";; ?>
