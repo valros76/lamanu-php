@@ -43,6 +43,6 @@ function rollDices(min, max) {
 calendar_days.forEach((day)=>{
    day.addEventListener("click", (e)=>{
       e.preventDefault();
-      alert(`${day.dataset.day} ${day.textContent} ${calendar_date.textContent.trim()} : ${rndStrings[rollDices(0,31)]}`)
+      alert(`${day.dataset.day} ${day.textContent} ${calendar_date.textContent.trim()} : ${rndStrings[rollDices(0,30)]}`)
    })
 })
