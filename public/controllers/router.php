@@ -30,6 +30,8 @@ function loadExercice($part, $page)
       case "exercice9":
       case "exercice10":
       case "tp":
+      case "tp1":
+      case "tp2":
          if ($exists_page) {
             require $exercice;
          } else {
@@ -59,6 +61,8 @@ function loadUserPage($part, $page, $userpage = null)
          case "exercice9":
          case "exercice10":
          case "tp":
+         case "tp1":
+         case "tp2":
             if ($exists_page) {
                require $userpage;
             } else {
