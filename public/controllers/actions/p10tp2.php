@@ -113,7 +113,11 @@ if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($stat
    }
    if (!preg_match("#^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,})))(?::\d{2,5})?(?:/[^\s]*)?$#iuS", $codeacademy_links)) {
       $urls = str_replace("http://|https://", " http://| https://", $codeacademy_links);
-      var_dump($urls);
+      $url_links = explode(',', trim($codeacademy_links));
+      foreach($url_links as $key => $url){
+         $url_links[$key] = str_replace(',', $url_links[$key], $url_links[$key]);
+         echo "<p><a href='$url_links[$key]' target='blank' rel='noopener noreferrer'>$url_links[$key]</a></p>";
+      }
       echo '<p>Liens Code Academy: ' . $codeacademy_links . '</p>';
    } else {
       echo "<p>Erreur sur les liens Code Academy.</p>";
