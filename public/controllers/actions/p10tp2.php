@@ -17,9 +17,9 @@ $marvel = isset($_POST["marvel"]) && !empty($_POST["marvel"]) ? validData($_POST
 $hacks = isset($_POST["hacks"]) && !empty($_POST["hacks"]) ? validData($_POST["hacks"]) : "";
 $xp = isset($_POST["xp"]) && !empty($_POST["xp"]) ? validData($_POST["xp"]) : "";
 
-foreach (get_defined_vars() as $key => $var) {
-   echo '<p>' . $key . ' : ' . $var . '</p>';
-}
+// foreach (get_defined_vars() as $key => $var) {
+//    echo '<p>' . $key . ' : ' . $var . '</p>';
+// }
 
 if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($state) && !empty($nationality) && !empty($adress) && !empty($cp) && !empty($city)  && !empty($email) && !empty($phone) && !empty($diploma) && !empty($pole_emploi_id) && !empty($nb_badges) && !empty($codeacademy_links) && !empty($marvel) && !empty($hacks)  && !empty($xp)) {
    $regStrings = '/^[A-Z][A-Za-z\à\á\â\ä\ç\è\é\ê\ë\ì\í\î\ï\ñ\ò\ó\ô\ö\ù\ú\û\ü\-]+$/';
@@ -116,9 +116,9 @@ if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($stat
       $url_links = explode(',', trim($codeacademy_links));
       foreach($url_links as $key => $url){
          $url_links[$key] = str_replace(',', $url_links[$key], $url_links[$key]);
+         echo "<p>Liens Codeacademy : $key</p>";
          echo "<p><a href='$url_links[$key]' target='blank' rel='noopener noreferrer'>$url_links[$key]</a></p>";
       }
-      echo '<p>Liens Code Academy: ' . $codeacademy_links . '</p>';
    } else {
       echo "<p>Erreur sur les liens Code Academy.</p>";
    }
@@ -137,8 +137,11 @@ if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($stat
    } else {
       echo "<p>Erreur sur la partie expérience.</p>";
    }
+   echo '<hr width="100%"/>';
 } else {
+   echo '<hr width="100%"/>';
    echo '<p>Information manquante.</p>';
+   echo '<hr width="100%"/>';
 }
 
 function validData($data)
