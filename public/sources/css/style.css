@@ -317,6 +317,20 @@ form input[type="submit"]:active{
   inset 4px 4px 4px -1px #252525,
   inset -4px -4px 4px -1px #fff;
 }
+form textarea{
+  width:100%;
+  min-width:100%;
+  max-width:100%;
+  min-height:25vh;
+  max-height:25vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0.25em;
+  grid-column:2 /-2;
+  resize:none;
+}
 
 .file-errors{
   color:crimson;

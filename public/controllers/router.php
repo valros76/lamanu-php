@@ -119,6 +119,9 @@ function launchAction($action)
       case "p6ex9":
          require $root . "/public/controllers/actions/p6ex9.php";
          break;
+      case "p10tp2":
+         require $root . "/public/controllers/actions/p10tp2.php";
+         break;
       default:
          loadErrorPage("404");
    }
