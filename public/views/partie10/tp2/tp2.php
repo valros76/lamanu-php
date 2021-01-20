@@ -2,7 +2,6 @@
 include $root . "public/includes/partie10/include_tp2.php";
 $pageTitle = "TP 2 - P10 - PHP";
 $headTitle = "TP 2 - P10";
-$cdns = '<script defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB1e4w9saEoKc4XeJIHy1nFYHcCNhNZPcI"></script>';
 ob_start();; ?>
 
 <section class="main-sections">
