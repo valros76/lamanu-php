@@ -16,7 +16,7 @@ ob_start();; ?>
          Rendu visuel
       </h3>
       <?php
-      echo "<p><em>Méthode 1</em></p>";
+      echo "<p><em>Méthode 1 [débugger un tableau - Méthode développeur]</em></p>";
       var_dump($departements); 
       echo "<p><em>Méthode 2</em></p>";
       echo "<p>".key($departements)." : ".$departements[2]."</p>";
