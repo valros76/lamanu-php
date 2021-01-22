@@ -28,7 +28,7 @@ if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($stat
    $regCP = '/^[0-9]{5}$/';
    $regDiploma = '/^[A-Za-z0-9\-\_]+$/';
    $regPoleEmploi = '/^[A-Za-z0-9]{8,12}$/';
-   $regUrl = '#((?:(?:https?|http)://)(?:w{3}|[A-Za-z0-9]+)\.[a-z]{1,12}(?:\ ?|\s))+$#iuS';
+   $regUrl = '#^((?:(?:https?|http)://)(?:w{3}|[A-Za-z0-9]+)\.[a-z]{1,12}(?:\ ?|\s))+$#iuS';
    $regBirthday = '#^\d{1,2}\/\d{1,2}\/\d{4}$#';
    list($yyyy,$mm,$dd) = explode("-", $birthday);
    $marvel = str_replace('\\r\\n', ' ', $marvel);
@@ -115,7 +115,7 @@ if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($stat
       echo "<p class='error-para'>Erreur sur le nombre de badges.</p>";
    }
    $codeacademy_links = $codeacademy_links." https://auxessenceselfiques.fr";
-   if (!preg_match("#((?:(?:https?|http)://)(?:w{3}|[A-Za-z0-9]+)\.[a-z]{1,12}(?:\ ?|\s))+$#iuS", $codeacademy_links)) {
+   if (!preg_match("#^((?:(?:https?|http)://)(?:w{3}|[A-Za-z0-9]+)\.[a-z]{1,12}(?:\ ?|\s))+$#iuS", $codeacademy_links)) {
       echo "<p class='error-para'>Erreur sur les liens Code Academy.</p>";
    } else {
       $url_links = explode(',', trim($codeacademy_links));
