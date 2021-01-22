@@ -114,15 +114,17 @@ if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($stat
    } else {
       echo "<p class='error-para'>Erreur sur le nombre de badges.</p>";
    }
-   if (!preg_match("#^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,})))(?::\d{2,5})?(?:/[^\s]*)?$#iuS", $codeacademy_links)) {
+   $codeacademy_links = $codeacademy_links." https://auxessenceselfiques.fr";
+   if (!preg_match("#((?:(?:https?|http)://)(?:w{3}|[A-Za-z0-9]+)\.[a-z]{1,12}(?:\ ?|\s))+$#iuS", $codeacademy_links)) {
       echo "<p class='error-para'>Erreur sur les liens Code Academy.</p>";
    } else {
-      $urls = str_replace("http://|https://", " http://| https://", $codeacademy_links);
       $url_links = explode(',', trim($codeacademy_links));
+      $url_links = explode(' ', trim($codeacademy_links));
       foreach($url_links as $key => $url){
          $url_links[$key] = str_replace(',', $url_links[$key], $url_links[$key]);
-         echo '<p class="valid-para">Liens Codeacademy : '.count($url_links).'<br/><a href='.$url_links[$key].' target="blank" rel="noopener noreferrer">'.$url_links[$key].'</a></p>';
+         echo '<p class="valid-para">Liens Codeacademy : ( id: '.$key.' )<br/><a href='.$url_links[$key].' target="blank" rel="noopener noreferrer">'.$url_links[$key].'</a></p>';
       }
+
    }
    if (!preg_match($regStrings, $marvel)) {
       echo "<p class='error-para'>Erreur sur la partie héros.</p>";
