@@ -22,64 +22,69 @@ $xp = isset($_POST["xp"]) && !empty($_POST["xp"]) ? validData($_POST["xp"]) : ""
 // }
 
 if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($state) && !empty($nationality) && !empty($adress) && !empty($cp) && !empty($city)  && !empty($email) && !empty($phone) && !empty($diploma) && !empty($pole_emploi_id) && !empty($nb_badges) && !empty($codeacademy_links) && !empty($marvel) && !empty($hacks)  && !empty($xp)) {
-   $regStrings = '/^[A-Z][A-Za-z\à\á\â\ä\ç\è\é\ê\ë\ì\í\î\ï\ñ\ò\ó\ô\ö\ù\ú\û\ü\-]+$/';
-   $regAdress = '/^[A-Z][A-Za-z\à\á\â\ä\ç\è\é\ê\ë\ì\í\î\ï\ñ\ò\ó\ô\ö\ù\ú\û\ü\-][0-9]{5}+$/';
+   $regStrings = '/^[A-Za-z0-9\à\á\â\ä\ç\è\é\ê\ë\ì\í\î\ï\ñ\ò\ó\ô\ö\ù\ú\û\ü\-\.\_\ \!\?\,\'\s\r\n\b\t\v\f\<\>\(br \/)]+$/';
    $regEmail = '/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/';
-   $regPhone = '/^([0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2})|((0|\+33)[1-9]( *[0-9]{2}){4})$/';
+   $regPhone = '/^(0|\+33)([0-9]{9,10})$/';
    $regCP = '/^[0-9]{5}$/';
-   $regDiploma = '/^[A-Z][A-Za-z0-9\-\_]+$/';
+   $regDiploma = '/^[A-Za-z0-9\-\_]+$/';
    $regPoleEmploi = '/^[A-Za-z0-9]{8,12}$/';
-   $regUrl = '_^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,})))(?::\d{2,5})?(?:/[^\s]*)?$_iuS';
-   list($dd, $mm, $yyyy) = explode('-', $birthday);
+   $regUrl = '#^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,})))(?::\d{2,5})?(?:/[^\s]*)?$#iuS';
+   $regBirthday = '#^\d{1,2}\/\d{1,2}\/\d{4}$#';
+   list($yyyy,$mm,$dd) = explode("-", $birthday);
+   $marvel = str_replace('\\r\\n', ' ', $marvel);
 
-   echo '<hr width="100%"/>';
-   echo '<p>Civilité : ' . strtoupper($civilite) . '</p>';
-   if (!preg_match($regStrings, strtolower($firstname))) {
-      echo '<p>Prénom : ' . $firstname . '</p>';
+   ob_start();
+   echo '<hr width="100%"/>
+   <article class="main-articles">';
+   echo '<p class="valid-para">Civilité : ' . strtoupper($civilite) . '</p>';
+   if (!preg_match($regStrings, $firstname)) {
+      echo "<p class='error-para'>Erreur sur le prénom.</p>";
    } else {
-      echo "<p>Erreur sur le prénom.</p>";
+      echo '<p class="valid-para">Prénom : ' . $firstname . '</p>';
    }
-   if (!checkdate($yyyy, $mm, $dd)) {
-      echo '<p>Erreur sur la date de naissance.</p>';
+   if (!checkdate($mm,$dd,$yyyy)) {
+      echo "<p class='error-para'>Erreur sur la date de naissance.</p>";
    } else {
-      echo '<p>Date de naissance : ' . $birthday . '</p>';
+      echo '<p class="valid-para">Date de naissance : '.$dd.'-'.$mm.'-'.$yyyy.'</p>';
    }
-   if (!preg_match($regStrings, strtolower($state))) {
-      echo '<p>Pays de naissance : ' . $state . '</p>';
+   if (!preg_match($regStrings, $state)) {
+      echo "<p class='error-para'>Erreur sur le pays de naissance.</p>";
    } else {
-      echo "<p>Erreur sur le pays de naissance.</p>";
+      echo '<p class="valid-para">Pays de naissance : ' . $state . '</p>';
    }
-   if (!preg_match($regStrings, strtolower($nationality))) {
-      echo '<p>Nationalité : ' . $nationality . '</p>';
+   if (!preg_match($regStrings, $nationality)) {
+      echo "<p class='error-para'>Erreur sur la nationnalité.</p>";
    } else {
-      echo "<p>Erreur sur la nationnalité.</p>";
+      echo '<p class="valid-para">Nationalité : ' . $nationality . '</p>';
    }
-   if (!preg_match($regStrings, strtolower($adress))) {
-      echo '<p>Adresse : ' . $adress . '</p>';
+   if (!preg_match('/^([0-9]+)((,|,\s|\s)([A-Za-z0-9\à\á\â\ä\ç\è\é\ê\ë\ì\í\î\ï\ñ\ò\ó\ô\ö\ù\ú\û\ü\-\_\']+))*$/', $adress)) {
+      echo "<p class='error-para'>Erreur sur l'adresse.</p>";
    } else {
-      echo "<p>Erreur sur l'adresse.</p>";
+      echo '<p class="valid-para">Adresse : ' . $adress . '</p>';
    }
    if (!preg_match($regCP, $cp)) {
-      echo '<p>Code postal : ' . $cp . '</p>';
+      echo "<p class='error-para'>Erreur sur le code postal.</p>";
    } else {
-      echo "<p>Erreur sur le code postal.</p>";
+      echo '<p class="valid-para">Code postal : ' . $cp . '</p>';
    }
-   if (!preg_match($regStrings, strtolower($city))) {
-      echo '<p>Ville : ' . $city . '</p>';
+   if (!preg_match('/^([A-Za-z0-9\à\á\â\ä\ç\è\é\ê\ë\ì\í\î\ï\ñ\ò\ó\ô\ö\ù\ú\û\ü\-\_\']+)*$/', strtolower($city))) {
+      echo "<p class='error-para'>Erreur sur la ville.</p>";
    } else {
-      echo "<p>Erreur sur la ville.</p>";
+      echo '<p class="valid-para">Ville : ' . $city . '</p>';
    }
-   if (filter_var(strtolower($email), FILTER_VALIDATE_EMAIL)) {
-      echo '<p>Email : ' . $email . '</p>';
+   if (!filter_var(strtolower($email), FILTER_VALIDATE_EMAIL)) {
+      echo "<p class='error-para'>Erreur sur l'email.</p>";
    } else {
-      echo "<p>Erreur sur l'email.</p>";
+      echo '<p class="valid-para">Email : ' . $email . '</p>';
    }
    if (!preg_match($regPhone, $phone)) {
-      echo '<p>Numéro de téléphone : ' . $phone . '</p>';
+      echo "<p class='error-para'>Erreur sur le numéro de téléphone.</p>";
    } else {
-      echo "<p>Erreur sur le numéro de téléphone.</p>";
+      echo '<p class="valid-para">Numéro de téléphone : ' . $phone . '</p>';
    }
    if (!preg_match($regDiploma, strtolower($diploma))) {
+      echo "<p class='error-para'>Erreur sur le diplôme.</p>";
+   } else {
       switch ($diploma) {
          case 'bac':
             $diploma = "BAC";
@@ -97,47 +102,47 @@ if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($stat
          default:
             $diploma = "Sans diplôme";
       }
-      echo '<p>Diplôme : ' . strtolower($diploma) . '</p>';
-   } else {
-      echo "<p>Erreur sur le diplôme.</p>";
+      echo '<p class="valid-para">Diplôme : ' . strtolower($diploma) . '</p>';
    }
    if (!preg_match($regPoleEmploi, $pole_emploi_id)) {
-      echo '<p>Identifiant Pôle Emploi : ' . $pole_emploi_id . '</p>';
+      echo "<p class='error-para'>Erreur sur l'identifiant Pôle Emploi.</p>";
    } else {
-      echo "<p>Erreur sur l'identifiant Pôle Emploi.</p>";
+      echo '<p class="valid-para">Identifiant Pôle Emploi : ' . $pole_emploi_id . '</p>';
    }
    if ($nb_badges >= 0 || $nb_badges <= 100) {
-      echo '<p>Nombre de badges : ' . $nb_badges . '</p>';
+      echo '<p class="valid-para">Nombre de badges : ' . $nb_badges . '</p>';
    } else {
-      echo "<p>Erreur sur le nombre de badges.</p>";
+      echo "<p class='error-para'>Erreur sur le nombre de badges.</p>";
    }
    if (!preg_match("#^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,})))(?::\d{2,5})?(?:/[^\s]*)?$#iuS", $codeacademy_links)) {
+      echo "<p class='error-para'>Erreur sur les liens Code Academy.</p>";
+   } else {
       $urls = str_replace("http://|https://", " http://| https://", $codeacademy_links);
       $url_links = explode(',', trim($codeacademy_links));
       foreach($url_links as $key => $url){
          $url_links[$key] = str_replace(',', $url_links[$key], $url_links[$key]);
-         echo "<p>Liens Codeacademy : $key</p>";
-         echo "<p><a href='$url_links[$key]' target='blank' rel='noopener noreferrer'>$url_links[$key]</a></p>";
+         echo '<p class="valid-para">Liens Codeacademy : '.count($url_links).'<br/><a href='.$url_links[$key].' target="blank" rel="noopener noreferrer">'.$url_links[$key].'</a></p>';
       }
-   } else {
-      echo "<p>Erreur sur les liens Code Academy.</p>";
    }
    if (!preg_match($regStrings, $marvel)) {
-      echo '<p>Héros : ' . $marvel . '</p>';
+      echo "<p class='error-para'>Erreur sur la partie héros.</p>";
    } else {
-      echo "<p>Erreur sur la partie héros.</p>";
+      echo '<p class="valid-para">Héros : ' . $marvel . '</p>';
    }
    if (!preg_match($regStrings, $hacks)) {
-      echo '<p>Hacks : ' . $hacks . '</p>';
+      echo "<p class='error-para'>Erreur sur la partie hacks.</p>";
    } else {
-      echo "<p>Erreur sur la partie hacks.</p>";
+      echo '<p class="valid-para">Hacks : ' . $hacks . '</p>';
    }
    if (!preg_match($regStrings, $xp)) {
-      echo '<p>Expérience : ' . $xp . '</p>';
+      echo "<p class='error-para'>Erreur sur la partie expérience.</p>";
    } else {
-      echo "<p>Erreur sur la partie expérience.</p>";
+      echo '<p class="valid-para">Expérience : ' . $xp . '</p>';
    }
-   echo '<hr width="100%"/>';
+   echo '<hr width="100%"/>
+   </article>';
+   $mainContent = ob_get_clean();
+   require_once $_SERVER['DOCUMENT_ROOT'].'/public/templates/default_template.php';
 } else {
    echo '<hr width="100%"/>';
    echo '<p>Information manquante.</p>';

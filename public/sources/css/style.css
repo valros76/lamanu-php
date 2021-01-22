@@ -47,6 +47,34 @@ pre,
   line-height: 24px;
 }
 
+.valid-para{
+  width:calc(100% - 8px);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  text-align:left;
+  padding:1em;
+  background-color:#f3f3f3;
+  color:#57c357;
+  gap:0.25em;
+}
+
+.error-para{
+  width:calc(100% - 8px);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  text-align:left;
+  padding:1em;
+  background-color:crimson;
+  color:#f3f3f3;
+  gap:0.25em;
+}
+
 #spoiler-toggle {
   border: none;
   padding: 1em;
