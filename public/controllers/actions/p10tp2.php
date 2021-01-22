@@ -119,6 +119,8 @@ if (!empty($civilite) && !empty($firstname) && !empty($birthday) && !empty($stat
       echo "<p class='error-para'>Erreur sur les liens Code Academy.</p>";
    } else {
       $url_links = explode(',', trim($codeacademy_links));
+      $url_links = explode(',', trim($codeacademy_links));
+      $url_links = explode('-', trim($codeacademy_links));
       $url_links = explode(' ', trim($codeacademy_links));
       foreach($url_links as $key => $url){
          $url_links[$key] = str_replace(',', $url_links[$key], $url_links[$key]);
