@@ -7,7 +7,7 @@ if (isset($_POST) && !empty($_POST)) {
    $firstname = isset($_POST["firstname"]) && !empty($_POST["firstname"]) ? $_POST["firstname"] : "";
    $lastname = isset($_POST["lastname"]) && !empty($_POST["lastname"]) ? $_POST["lastname"] : "";
    $file = isset($_FILES["image"]) && !empty($_FILES["image"]) ? $_FILES["image"] : "";
-   $data = '<p>' . $civilite . ' ' . $firstname . ' ' . $lastname . '</p><p>Fichier : '.$file["name"].', Extension : '.$file["type"].'</p>';
+   $data = '<p>' . $civilite . ' ' . $firstname . ' ' . $lastname . '</p><p>Fichier : '.$file["name"].', Extension : '.pathinfo($file["name"],PATHINFO_EXTENSION) .' </p>';
 } else {
    $form = '<form action="' . $_SERVER["REQUEST_URI"] . '" method="POST" enctype="multipart/form-data">
    <select name="civilite" id="civilite">
