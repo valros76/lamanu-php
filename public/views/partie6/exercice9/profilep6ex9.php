@@ -7,6 +7,7 @@ $lastname = isset($_POST["lastname"]) && !empty($_POST["lastname"]) ? $_POST["la
 $firstname = isset($_POST["firstname"]) && !empty($_POST["firstname"]) ? $_POST["firstname"] : "";
 $birthday = isset($_POST["birthday"]) && !empty($_POST["birthday"]) ? $_POST["birthday"] : "";
 $avatar = isset($_FILES["avatar"]) && !empty($_FILES["avatar"]) ? $_FILES["avatar"] : "";
+$avatar_moved = "";
 
 if (
    !empty($civilite)
@@ -26,6 +27,7 @@ if (
    }
    if (move_uploaded_file($avatar["tmp_name"], $avatar_file) && $uploadState === 1) {
       $confirm_move_file = "The file " . htmlspecialchars(basename($avatar["name"])) . " has been uploaded.";
+      $avatar_moved = htmlspecialchars(basename($avatar["name"]));
    }
 }
 ob_start();; ?>
@@ -39,6 +41,9 @@ ob_start();; ?>
    </div>
    <p class="main-sections-description">
       Civilité : <?= strtoupper($civilite); ?><br />
+      <?php if (!empty($avatar)):;?>
+         <img src="<?= $avatar_moved;?>" alt="">
+      <?php endif; ?>
       Nom de famille : <?= $lastname; ?><br />
       Prénom : <?= $firstname; ?><br />
       Date de naissance : <?= $birthday; ?>
