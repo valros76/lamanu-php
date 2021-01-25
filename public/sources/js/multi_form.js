@@ -6,6 +6,7 @@ let submit_input = document.getElementById("submit-form")
 let form_inputs = document.getElementsByClassName("big-form-input")
 let form = document.getElementById("big-form")
 let infos_container = document.querySelector(".infos-container")
+let cp = document.getElementById('cp');
 const notyf = new Notyf({
    duration: 3000,
    dismissible: true,
@@ -144,3 +145,11 @@ submit_input.addEventListener("click", (e) => {
    console.log(data)
    ajax.send(data);
 })
+
+if(cp){
+   cp.addEventListener("keyup", (e)=>{
+      if (cp.value.length > 5) {
+         cp.value = cp.value.slice(0,5); 
+      }
+   })
+}

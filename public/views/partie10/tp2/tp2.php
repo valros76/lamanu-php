@@ -35,7 +35,7 @@ ob_start();; ?>
             <label for="adress">Adresse*</label>
             <input type="text" placeholder="70 rue des Jacobins" class="big-form-input" name="adress" id="adress" required />
             <label for="cp">Code Postal*</label>
-            <input type="number" placeholder="80000" name="cp" id="cp" class="big-form-input" minlength="5" maxlength="5" required />
+            <input type="number" placeholder="80000" name="cp" id="cp" class="big-form-input" min="00000" max="99999" required />
             <label for="city">Ville*</label>
             <input type="text" placeholder="Amiens" name="city" id="city" class="big-form-input" required />
             <label for="email">E-mail*</label>

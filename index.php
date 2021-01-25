@@ -3,6 +3,7 @@ if(session_status() == PHP_SESSION_NONE){
    session_start();
 }
 $root = $_SERVER["DOCUMENT_ROOT"];
+require "public/utils/regex.php";
 require_once "public/controllers/router.php";
 
 $part = isset($_GET["part"]) && !empty($_GET["part"]) ? htmlspecialchars($_GET["part"]) : "";
