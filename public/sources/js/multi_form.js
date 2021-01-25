@@ -34,7 +34,7 @@ for (const link of links) {
    let direction = link.dataset.direction
    link.addEventListener("click", (e) => {
       e.preventDefault();
-      console.log(actual_part);
+      window.scroll(0,(form.offsetHeight/4))
       switch (direction) {
          case 'forward':
             if (actual_part === 1) {
@@ -109,14 +109,14 @@ submit_input.addEventListener("click", (e) => {
          infos_container.innerHTML += html
 
          notyf.open({
-            type:"info",
+            type: "info",
             message: "Formulaire traité !",
             duration: 0,
          });
       } else {
          infos_container.innerHTML = `<p class="valid-para">Erreur : Information(s) invalide(s)</p>`
          notyf.open({
-            type:"error",
+            type: "error",
             message: "Informations invalides !",
             duration: 0,
          })

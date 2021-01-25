@@ -51,7 +51,7 @@ ob_start();; ?>
                   <option value="superieur">Supérieur*</option>
                </optgroup>
             </select>
-            <a href="#form-part-3" data-cible="#form-part-1" data-part="2" data-direction="back" class="form-links">&larr;</a>
+            <a href="#form-part-1" data-cible="#form-part-1" data-part="2" data-direction="back" class="form-links">&larr;</a>
             <a href="#form-part-3" data-cible="#form-part-3" data-part="2" data-direction="forward" class="form-links">&rarr;</a>
          </div>
          <div id="form-part-3"><label for="pole_emploi_id">Identifiant Pôle Emploi*</label>
