@@ -2,7 +2,7 @@
 if(session_status() == PHP_SESSION_NONE){
    session_start();
 }
-$_SESSION['debug'] = true;
+$_SESSION['debug'] = false;
 $root = $_SERVER["DOCUMENT_ROOT"];
 function loadClass($class){
    require $root.'public/models/'.ucfirst($class).'.php';
