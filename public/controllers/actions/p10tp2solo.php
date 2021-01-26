@@ -1,135 +1,214 @@
 <?php
 
-function validCivilite($civilite){
+function validCivilite($civilite)
+{
    $civilite = strtoupper($civilite);
-   if(!preg_match(REGEX_CIVILITE, $civilite)){
-      return false;
-   }else{
-      return true;
-   }
-}
-function validFirstname($firstname){
-   if (!preg_match(REGEX_STRINGS, $firstname)) {
-      return false;
+   if (!preg_match(REGEX_CIVILITE, $civilite)) {
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $civilite]);
    }
 }
-function validBirthday($birthday){
+function validFirstname($firstname)
+{
+   if (!preg_match(REGEX_FIRSTNAME, $firstname)) {
+      echo "";
+   } else {
+      echo json_encode(["verification" => $firstname]);
+   }
+}
+function validBirthday($birthday)
+{
    list($yyyy, $mm, $dd) = explode("-", $birthday);
    if (!checkdate($mm, $dd, $yyyy)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      if($yyyy >= 1970 && $yyyy <= 2005){
+         echo json_encode(["verification" => $birthday]);
+      }else{
+         echo "";
+      }
    }
 }
-function validState($state){
+function validState($state)
+{
    if (!preg_match(REGEX_STRINGS, $state)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $state]);
    }
 }
-function validNationality($nationality){
+function validNationality($nationality)
+{
    if (!preg_match(REGEX_STRINGS, $nationality)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $nationality]);
    }
 }
-function validAdress($adress){
+function validAdress($adress)
+{
    if (!preg_match(REGEX_ADRESS, $adress)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $adress]);
    }
 }
-function validCp($cp){
+function validCp($cp)
+{
    if (!preg_match(REGEX_CP, $cp)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $cp]);
    }
 }
-function validCity($city){
-   if (!preg_match(REGEX_CITY,strtolower($city))) {
-      return false;
+function validCity($city)
+{
+   if (!preg_match(REGEX_CITY, strtolower($city))) {
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $city]);
    }
 }
-function validEmail($email){
+function validEmail($email)
+{
    if (!filter_var(strtolower($email), FILTER_VALIDATE_EMAIL)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $email]);
    }
 }
-function validPhone($phone){
+function validPhone($phone)
+{
    if (!preg_match(REGEX_PHONE, $phone)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $phone]);
    }
 }
-function validDiploma($diploma){
+function validDiploma($diploma)
+{
    if (!preg_match(REGEX_DIPLOMA, strtolower($diploma))) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $diploma]);
    }
 }
-function validPoleEmploiId($pole_emploi_id){
+function validPoleEmploiId($pole_emploi_id)
+{
    if (!preg_match(REGEX_POLE_EMPLOI, $pole_emploi_id)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $pole_emploi_id]);
    }
 }
-function validNbBadges($nb_badges){
+function validNbBadges($nb_badges)
+{
    $nb_badges = (int) $nb_badges;
-   if ($nb_badges >= 0 || $nb_badges <= 100) {
-      return true;
+   if ($nb_badges >= 0 && $nb_badges <= 100) {
+      echo json_encode(["verification" => $nb_badges]);
    } else {
-      return false;
+      echo "";
    }
 }
-function validCodeAcademyLinks($codeacademy_links){
+function validCodeAcademyLinks($codeacademy_links)
+{
    if (!preg_match(REGEX_URL, $codeacademy_links)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $codeacademy_links]);
    }
 }
-function validMarvel($marvel){
+function validMarvel($marvel)
+{
    $marvel = str_replace('\\r\\n', ' ', $marvel);
    if (!preg_match(REGEX_STRINGS, $marvel)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $marvel]);
    }
 }
-function validHacks($hacks){
+function validHacks($hacks)
+{
    if (!preg_match(REGEX_STRINGS, $hacks)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $hacks]);
    }
 }
-function validXp($xp){
+function validXp($xp)
+{
    if (!preg_match(REGEX_STRINGS, $xp)) {
-      return false;
+      echo "";
    } else {
-      return true;
+      echo json_encode(["verification" => $xp]);
    }
 }
 
-function launchValidation($type, $data){
-   $func_launch = 'valid'.ucfirst($type).'('.$data.')';
-   $func_launch;
-   echo json_encode(["validation"=>"launch"]);
+function launchValidation($data,$type)
+{
+   $func_launch = 'valid' . ucfirst($data) . '(' . $data . ')';
+   switch ($type) {
+      case 'civilite':
+         validCivilite($data);
+         break;
+      case 'firstname':
+         validFirstname($data);
+         break;
+      case 'birthday':
+         validBirthday($data);
+         break;
+      case 'state':
+         validState($data);
+         break;
+      case 'nationality':
+         validNationality($data);
+         break;
+      case 'adress':
+         validAdress($data);
+         break;
+      case 'cp':
+         validCp($data);
+         break;
+      case 'city':
+         validCity($data);
+         break;
+      case 'email':
+         validEmail($data);
+         break;
+      case 'phone':
+         validPhone($data);
+         break;
+      case 'diploma':
+         validDiploma($data);
+         break;
+      case 'pole_emploi_id':
+         validPoleEmploiId($data);
+         break;
+      case 'nb_badges':
+         validNbBadges($data);
+         break;
+      case 'codeacademy_links':
+         validCodeAcademyLinks($data);
+         break;
+      case 'marvel':
+         validMarvel($data);
+         break;
+      case 'hacks':
+         validHacks($data);
+         break;
+      case 'xp':
+         validXp($data);
+         break;
+      default:
+         echo "";
+         // echo json_encode(["error"=>"La validation ne peut pas se lancer !"]);
+   }
+   // echo json_encode(["validation" => $data]);
 }
 
-if(isset($_POST["type"]) && !empty($_POST["type"]) && isset($_POST["data"]) && !empty($_POST["data"])){
-   launchValidation(validData($_POST["type"]), validData($_POST["data"]));
+if (isset($_GET["verif_form"]) && !empty($_GET["verif_form"])) {
+   $type = validData($_GET['verif_form']);
+   $data = $_POST[$type];
+   launchValidation($data,$type);
 }

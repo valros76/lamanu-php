@@ -129,3 +129,14 @@ function launchAction($action)
          loadErrorPage("404");
    }
 }
+
+function ajaxRequest($req){
+   global $root;
+   switch (true) {
+      case $req:
+         require $root . "/public/controllers/actions/p10tp2solo.php";
+         break;
+      default:
+         loadErrorPage("404");
+   }
+}

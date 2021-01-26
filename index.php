@@ -18,6 +18,7 @@ $page = isset($_GET["page"]) && !empty($_GET["page"]) ? htmlspecialchars($_GET["
 $otherpage = isset($_GET["otherpage"]) && !empty($_GET["otherpage"]) ? htmlspecialchars($_GET["otherpage"]) : "";
 $userpage = isset($_GET["userpage"]) && !empty($_GET["userpage"]) ? htmlspecialchars($_GET["userpage"]) : "";
 $submit_form = isset($_GET["submit_form"]) && !empty($_GET["submit_form"]) ? htmlspecialchars($_GET["submit_form"]) : "";
+$verif_form = isset($_GET["verif_form"]) && !empty($_GET["verif_form"]) ? htmlspecialchars($_GET["verif_form"]) : "";
 
 if (!empty($part) && !empty($page) && empty($userpage) && empty($submit_form) && empty($otherpage)) {
    try{
@@ -41,6 +42,8 @@ if (!empty($part) && !empty($page) && empty($userpage) && empty($submit_form) &&
    }
 }else if(!empty($submit_form)){
    launchAction($submit_form);
+}else if(!empty($verif_form)){
+   ajaxRequest($verif_form);
 }else {
    loadPage("home");
 }

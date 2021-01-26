@@ -19,7 +19,12 @@ function testDatas($civilite, $firstname, $birthday, $state, $nationality, $adre
          $errors_tabs += ['birthday' => '<p class="error-para">Erreur sur la date de naissance.</p>'];
          throw new Exception('Erreur sur la date de naissance');
       } else {
-         $return_datas += ['birthday' => '<p class="valid-para">Date de naissance : ' . $dd . '-' . $mm . '-' . $yyyy . '</p>'];
+         if($yyyy >= 1970 && $yyyy <= 2005){
+            $return_datas += ['birthday' => '<p class="valid-para">Date de naissance : ' . $dd . '-' . $mm . '-' . $yyyy . '</p>'];
+         }else{
+            $errors_tabs += ['birthday' => '<p class="error-para">Erreur sur la date de naissance.</p>'];
+            throw new Exception('Erreur sur la date de naissance');
+         }
       }
       if (!preg_match(REGEX_STRINGS, $state)) {
          $errors_tabs += ['state' => '<p class="error-para">Erreur sur le pays de naissance.</p>'];
@@ -92,7 +97,7 @@ function testDatas($civilite, $firstname, $birthday, $state, $nationality, $adre
       } else {
          $return_datas += ['pole_emploi_id' => '<p class="valid-para">Identifiant Pôle Emploi : ' . $pole_emploi_id . '</p>'];
       }
-      if ($nb_badges >= 0 || $nb_badges <= 100) {
+      if ($nb_badges >= 0 && $nb_badges <= 100) {
          $return_datas += ['nb_badges' => '<p class="valid-para">Nombre de badges : ' . $nb_badges . '</p>'];
       } else {
          $errors_tab += ['nb_badges' => '<p class="error-para">Erreur sur le nombre de badges.</p>'];

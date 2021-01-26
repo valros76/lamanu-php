@@ -77,10 +77,178 @@ for (const link of links) {
    })
 }
 
-for (input of form_inputs) {
-   input.addEventListener("blur", () => {
-      console.log("test")
-   })
+let appendHtmlResponse = (id, resultat) => {
+   let response
+   if (resultat.codeacademy_links) {
+      let links = []
+      for (link in resultat.codeacademy_links) {
+         links.push(resultat.codeacademy_links[link])
+      }
+      links = links.join("")
+   }
+   switch (id) {
+      case 'civilite':
+         response = `${resultat["civilite"]}`
+         break;
+      case 'firstname':
+         response = `${resultat["firstname"]}`
+         break;
+      case 'birthday':
+         response = `${resultat["birthday"]}`
+         break;
+      case 'state':
+         response = `${resultat["state"]}`
+         break;
+      case 'nationality':
+         response = `${resultat["nationality"]}`
+         break;
+      case 'adress':
+         response = `${resultat["adress"]}`
+         break;
+      case 'cp':
+         response = `${resultat["cp"]}`
+         break;
+      case 'city':
+         response = `${resultat["city"]}`
+         break;
+      case 'email':
+         response = `${resultat["email"]}`
+         break;
+      case 'phone':
+         response = `${resultat["phone"]}`
+         break;
+      case 'diploma':
+         response = `${resultat["diploma"]}`
+         break;
+      case 'pole_emploi_id':
+         response = `${resultat["pole_emploi_id"]}`
+         break;
+      case 'nb_badges':
+         response = `${resultat["nb_badges"]}`
+         break;
+      case 'codeacademy_links':
+         response = `${links}`
+         break;
+      case 'marvel':
+         response = `${resultat["marvel"]}`
+         break;
+      case 'hacks':
+         response = `${resultat["hacks"]}`
+         break;
+      case 'xp':
+         response = `${resultat["xp"]}`
+         break;
+      default:
+         response = 'Erreur !JS'
+   }
+   return response
+}
+
+let inputAjax = (input) => {
+   let ajax = new XMLHttpRequest()
+   ajax.open('POST', `?verif_form=${input.id}`, true)
+   ajax.onload = function (res) {
+      let resultat
+      let html
+      console.log(ajax.responseText)
+      if (ajax.responseText && ajax.responseText != "") {
+         resultat = JSON.parse(ajax.responseText);
+         //console.log(resultat)
+         input.style.backgroundColor = "#B9EECD";
+         console.log(input)
+      } else {
+         input.style.backgroundColor = "#F25282";
+      }
+   }
+   let data = new FormData()
+   switch (input.id) {
+      case 'civilite':
+         data.append("civilite", document.querySelector("#civilite").value)
+         break;
+      case 'firstname':
+         data.append("firstname", document.querySelector("#firstname").value)
+         break;
+      case 'birthday':
+         data.append("birthday", document.querySelector("#birthday").value)
+         break;
+      case 'state':
+         data.append("state", document.querySelector("#state").value)
+         break;
+      case 'nationality':
+         data.append("nationality", document.querySelector("#nationality").value)
+         break;
+      case 'adress':
+         data.append("adress", document.querySelector("#adress").value)
+         break;
+      case 'cp':
+         data.append("cp", document.querySelector("#cp").value)
+         break;
+      case 'city':
+         data.append("city", document.querySelector("#city").value)
+         break;
+      case 'email':
+         data.append("email", document.querySelector("#email").value)
+         break;
+      case 'phone':
+         data.append("phone", document.querySelector("#phone").value)
+         break;
+      case 'diploma':
+         data.append("diploma", document.querySelector("#diploma").value)
+         break;
+      case 'pole_emploi_id':
+         data.append("pole_emploi_id", document.querySelector("#pole_emploi_id").value)
+         break;
+      case 'nb_badges':
+         data.append("nb_badges", document.querySelector("#nb_badges").value)
+         break;
+      case 'codeacademy_links':
+         data.append("codeacademy_links", document.querySelector("#codeacademy_links").value)
+         break;
+      case 'marvel':
+         data.append("marvel", document.querySelector("#marvel").value)
+         break;
+      case 'hacks':
+         data.append("hacks", document.querySelector("#hacks").value)
+         break;
+      case 'xp':
+         data.append("xp", document.querySelector("#xp").value)
+         break;
+      default:
+         data = ""
+   }
+   // Display the key/value pairs
+   for (var pair of data.entries()) {
+      console.log(pair[0] + ' : ' + pair[1]);
+   }
+
+
+   if (data != "") {
+      ajax.send(data)
+   } else {
+      ajax.send()
+   }
+}
+
+if(document.querySelector('#civilite')){
+   inputAjax(document.querySelector('#civilite'))
+}
+if(document.querySelector('#birthday')){
+   inputAjax(document.querySelector('#birthday'))
+}
+if(document.querySelector('#diploma')){
+   inputAjax(document.querySelector('#diploma'))
+}
+
+for (const input of form_inputs) {
+   if(input.id != 'civilite'){
+      input.addEventListener("keyup", (e) => {
+         inputAjax(input)
+      })
+   }else{
+      input.addEventListener("change", (e) => {
+         inputAjax(input)
+      })
+   }
 }
 
 
@@ -90,14 +258,14 @@ submit_input.addEventListener("click", (e) => {
    ajax.open('POST', '?submit_form=p10tp2', true)
    ajax.onload = function (res) {
       // console.log("Form response : " + ajax.responseText);
-      let resultat;
-      let html;
+      let resultat
+      let html
       if (ajax.responseText && ajax.responseText != "") {
          resultat = JSON.parse(ajax.responseText);
          console.log(resultat)
          let links = []
-         for(link in resultat.codeacademy_links){
-               links.push(resultat.codeacademy_links[link])
+         for (link in resultat.codeacademy_links) {
+            links.push(resultat.codeacademy_links[link])
          }
          links = links.join("")
          console.log(links)
@@ -167,6 +335,19 @@ if (cp) {
    cp.addEventListener("keyup", (e) => {
       if (cp.value.length > 5) {
          cp.value = cp.value.slice(0, 5);
+      }
+   })
+}if (document.querySelector('#nb_badges')) {
+   document.querySelector('#nb_badges').addEventListener("keyup", (e) => {
+      if (document.querySelector('#nb_badges').value.length > 5) {
+         document.querySelector('#nb_badges').value = document.querySelector('#nb_badges').value.slice(0, 3);
+      }
+      if(parseInt(document.querySelector('#nb_badges').value) > 100){
+         document.querySelector('#nb_badges').value = 100;
+         inputAjax(document.querySelector('#nb_badges'))
+      }else if(parseInt(document.querySelector('#nb_badges').value) < 0){
+         document.querySelector('#nb_badges').value = 0;
+         inputAjax(document.querySelector('#nb_badges'))
       }
    })
 }
