@@ -379,20 +379,20 @@ form {
     bottom:0;
     opacity:0;
     transform:scale(0.5);
-    filter:invert(0.5) translateY(100%) hue-rotate(180deg);
+    filter:invert(0.5) translateY(0) translateX(0) hue-rotate(180deg);
     grid-column:-1;
   }35%{
     position:absolute;
     bottom:0;
     opacity:0.5;
     transform:scale(0.5);
-    filter:invert(0.25) translateY(50%) hue-rotate(90deg);
+    filter:invert(0.25) translateY(0) translateX(0) hue-rotate(90deg);
   }100%{
     position:relative;
     bottom:0;
     opacity:1;
     transform:scale(1);
-    filter:invert(0) translateY(0) hue-rotate(0);
+    filter:invert(0) translateY(0) translateX(0) hue-rotate(0);
     grid-column:1;
   }
 }
@@ -426,20 +426,20 @@ form {
     position:absolute;
     bottom:0;
     opacity:0;
-    transform:translateX(100%) scale(0.5);
+    transform:translateX(0) translateY(0) scale(0.5);
     filter:invert(0.5) hue-rotate(180deg);
     grid-column:2;
   }35%{
     position:absolute;
     bottom:0;
     opacity:0.5;
-    transform:translateX(50%) scale(0.5);
+    transform:translateX(0) translateY(0) scale(0.5);
     filter:invert(0.25) hue-rotate(90deg);
   }100%{
     position:relative;
     bottom:0;
     opacity:1;
-    transform:translateX(0) scale(1);
+    transform:translateX(0) translateY(0) scale(1);
     filter:invert(0) hue-rotate(0);
     grid-column:1;
   }

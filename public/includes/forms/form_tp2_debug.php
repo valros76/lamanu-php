@@ -13,7 +13,7 @@
                <input type="text" placeholder="France" name="state" id="state" class="big-form-input" value="France" required />
                <label for="nationality">Nationalité*</label>
                <input type="text" placeholder="Française" name="nationality" class="big-form-input" id="nationality" value="Française" required />
-         <a href="#form-part-2" data-cible="#form-part-2" data-part="1" data-direction="forward" class="form-links form-part-next">&rarr;</a>
+         <a href="#form-part-2" data-cible="#form-part-2" data-part="1" data-direction="forward" id="forward-to-2" class="form-links form-part-next">&rarr;</a>
             </div>
             <div id="form-part-2">
                <label for="adress">Adresse*</label>
@@ -35,8 +35,8 @@
                      <option value="superieur">Supérieur*</option>
                   </optgroup>
                </select>
-               <a href="#form-part-1" data-cible="#form-part-1" data-part="2" data-direction="back" class="form-links">&larr;</a>
-               <a href="#form-part-3" data-cible="#form-part-3" data-part="2" data-direction="forward" class="form-links">&rarr;</a>
+               <a href="#form-part-1" data-cible="#form-part-1" data-part="2" data-direction="back" id="back-to-1" class="form-links">&larr;</a>
+               <a href="#form-part-3" data-cible="#form-part-3" data-part="2" data-direction="forward" id="forward-to-3" class="form-links">&rarr;</a>
             </div>
             <div id="form-part-3"><label for="pole_emploi_id">Identifiant Pôle Emploi*</label>
                <input type="text" placeholder="8 à 12 caractères" name="pole_emploi_id" id="pole_emploi_id" minlength="8" maxlength="12" class="big-form-input" value="3550871A" required />
@@ -51,7 +51,7 @@
                <label for="xp">Avez vous déjà eu une expérience avec la programmation et/ou l'informatique avant de remplir ce formulaire ?*</label>
                <textarea name="xp" id="xp" class="big-form-input" required>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi vero autem minus voluptatem accusamus, provident reprehenderit officiis ipsum obcaecati reiciendis voluptatum beatae, dolores voluptas modi ipsam rem cumque alias officia.</textarea>
                <input type="submit" value="Valider" id="submit-form">
-               <a href="#form-part-2" data-cible="#form-part-2" data-part="3" data-direction="back" class="form-links">&larr;</a>
+               <a href="#form-part-2" data-cible="#form-part-2" data-part="3" data-direction="back" id="back-to-2" class="form-links">&larr;</a>
             </div>
          </form>
       </div>

@@ -7,6 +7,7 @@ let form_inputs = document.getElementsByClassName("big-form-input")
 let form = document.getElementById("big-form")
 let infos_container = document.querySelector(".infos-container")
 let cp = document.getElementById('cp');
+let actual_part = 1;
 const notyf = new Notyf({
    duration: 3000,
    dismissible: true,
@@ -150,12 +151,12 @@ let inputAjax = (input) => {
    ajax.onload = function (res) {
       let resultat
       let html
-      console.log(ajax.responseText)
+      // console.log(ajax.responseText)
       if (ajax.responseText && ajax.responseText != "") {
          resultat = JSON.parse(ajax.responseText);
          //console.log(resultat)
          input.style.backgroundColor = "#B9EECD";
-         console.log(input)
+         // console.log(input)
       } else {
          input.style.backgroundColor = "#F25282";
       }
@@ -217,9 +218,9 @@ let inputAjax = (input) => {
          data = ""
    }
    // Display the key/value pairs
-   for (var pair of data.entries()) {
-      console.log(pair[0] + ' : ' + pair[1]);
-   }
+   // for (var pair of data.entries()) {
+   //    console.log(pair[0] + ' : ' + pair[1]);
+   // }
 
 
    if (data != "") {
@@ -262,13 +263,13 @@ submit_input.addEventListener("click", (e) => {
       let html
       if (ajax.responseText && ajax.responseText != "") {
          resultat = JSON.parse(ajax.responseText);
-         console.log(resultat)
+         // console.log(resultat)
          let links = []
          for (link in resultat.codeacademy_links) {
             links.push(resultat.codeacademy_links[link])
          }
          links = links.join("")
-         console.log(links)
+         // console.log(links)
          html = `
                   ${resultat["civilite"]}
                   ${resultat["firstname"]}
@@ -351,3 +352,30 @@ if (cp) {
       }
    })
 }
+
+document.addEventListener("keyup", (e)=>{
+   let arrow_links = document.getElementsByClassName("form-links")
+      switch(e.key){
+         case 'ArrowRight':
+            if(actual_part === 1){
+               document.querySelector("#forward-to-2").click()
+               actual_part = 2
+            }else if(actual_part === 2){
+               document.querySelector("#forward-to-3").click()
+               actual_part = 3
+            }
+         break;
+         case 'ArrowLeft':
+            if(actual_part === 2){
+               document.querySelector("#back-to-1").click()
+               actual_part = 1
+            }else if(actual_part === 3){
+               document.querySelector("#back-to-2").click()
+               actual_part = 2
+            }
+         break;
+         default:
+      }
+      console.log(actual_part)
+   
+})
