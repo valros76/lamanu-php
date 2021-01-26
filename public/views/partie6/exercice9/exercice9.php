@@ -22,6 +22,7 @@ ob_start();; ?>
          Rendu visuel
       </h3>
       <form action="?part=partie6&page=exercice9&userpage=profilep6ex9" method="POST" enctype="multipart/form-data">
+         <div class="form-part-1">
       <fieldset>
          <legend>
             Sélectionnez votre civilité
@@ -39,6 +40,7 @@ ob_start();; ?>
          <input type="date" name="birthday" id="birthday" min="1920-01-01" max="2020-01-01" required />
          <input type="file" name="avatar" id="avatar" accept="image/jpeg,image/png" required />
          <input type="submit" value="Valider">
+         </div>
       </form>
    </article>
 </section>

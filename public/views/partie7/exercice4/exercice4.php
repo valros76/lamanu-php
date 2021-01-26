@@ -31,7 +31,8 @@ ob_start();; ?>
       <?php
       if (empty($_COOKIE["username"]) && empty($_COOKIE["password"])) {; ?>
          <form action="<?= $_SERVER["REQUEST_URI"]; ?>" method="POST">
-            <label for="username">
+         <div class="form-part-1">
+         <label for="username">
                Pseudo
             </label>
             <input type="text" placeholder="user42" name="username" id="username" required />
@@ -40,6 +41,7 @@ ob_start();; ?>
             </label>
             <input type="password" placeholder="********" name="password" id="password" required />
             <input type="submit" value="Se connecter">
+         </div>
          </form>
       <?php } else {; ?>
          <p>

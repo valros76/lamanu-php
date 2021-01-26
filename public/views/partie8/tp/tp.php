@@ -38,32 +38,8 @@ ob_start();; ?>
       <h3 class="main-articles-title">
          Rendu visuel
       </h3>
-      <form action="<?= $_SERVER["REQUEST_URI"]; ?>" method="POST">
-         <select name="month" id="month">
-            <option value="1" selected>Janvier</option>
-            <option value="2">Février</option>
-            <option value="3">Mars</option>
-            <option value="4">Avril</option>
-            <option value="5">Mai</option>
-            <option value="6">Juin</option>
-            <option value="7">Juillet</option>
-            <option value="8">Août</option>
-            <option value="9">Septembre</option>
-            <option value="10">Octobre</option>
-            <option value="11">Novembre</option>
-            <option value="12">Décembre</option>
-         </select>
-         <select name="year" id="year">
-            <option value="2021" selected>2021</option>
-            <?php
-            for ($i = 2020; $i >= 1970; $i--) {
-               echo '<option value="' . $i . '">' . $i . '</option>';
-            }; ?>
-         </select>
-         <input type="submit" value="Afficher">
-      </form>
-      <p>Cliquez sur les jours du mois pour lire aléatoirement une phrase de parisien (31 phrases à découvrir).</p>
       <?php if (!empty($month) && !empty($year)) {; ?>
+      <p>Cliquez sur les jours du mois pour lire aléatoirement une phrase de parisien (31 phrases à découvrir).</p>
          <div class="calendar-container">
             <table class="calendar">
                <caption id="calendar-date">
@@ -91,20 +67,20 @@ ob_start();; ?>
                               $week++;
                            }
                            if ($before_first_day === true) {
-                              if ($days[$iteration-1] === $first_day) {
-                                 echo '<td class="calendar-days" data-day='.$days[$iteration-1].'>' . $i . '</td>';
+                              if ($days[$iteration - 1] === $first_day) {
+                                 echo '<td class="calendar-days" data-day=' . $days[$iteration - 1] . '>' . $i . '</td>';
                                  $i++;
                                  $before_first_day = false;
                               } else {
                                  echo '<td class="null-days">&nbsp;</td>';
                               }
                            } else {
-                              if($i <= $nb_days && $iteration < count($days)){
-                                 echo '<td class="calendar-days" data-day='.$days[$iteration-1].'>' . $i . '</td>';
+                              if ($i <= $nb_days && $iteration < count($days)) {
+                                 echo '<td class="calendar-days" data-day=' . $days[$iteration - 1] . '>' . $i . '</td>';
                                  $i++;
-                              }else if($i <= $nb_days && $iteration === count($days)){
-                                 echo '<td class="calendar-days" data-day='.$days[$iteration-1].'>' . $i . '</td>';
-                              }else{
+                              } else if ($i <= $nb_days && $iteration === count($days)) {
+                                 echo '<td class="calendar-days" data-day=' . $days[$iteration - 1] . '>' . $i . '</td>';
+                              } else {
                                  echo '<td class="null-days">&nbsp;</td>';
                               }
                            }
@@ -116,6 +92,32 @@ ob_start();; ?>
             </table>
          </div>
       <?php }; ?>
+      <form action="<?= $_SERVER["REQUEST_URI"]; ?>" method="POST">
+         <div id="form-part-1">
+            <select name="month" id="month">
+               <option value="1" selected>Janvier</option>
+               <option value="2">Février</option>
+               <option value="3">Mars</option>
+               <option value="4">Avril</option>
+               <option value="5">Mai</option>
+               <option value="6">Juin</option>
+               <option value="7">Juillet</option>
+               <option value="8">Août</option>
+               <option value="9">Septembre</option>
+               <option value="10">Octobre</option>
+               <option value="11">Novembre</option>
+               <option value="12">Décembre</option>
+            </select>
+            <select name="year" id="year">
+               <option value="2021" selected>2021</option>
+               <?php
+               for ($i = 2020; $i >= 1970; $i--) {
+                  echo '<option value="' . $i . '">' . $i . '</option>';
+               }; ?>
+            </select>
+            <input type="submit" value="Afficher">
+         </div>
+      </form>
    </article>
 </section>
 

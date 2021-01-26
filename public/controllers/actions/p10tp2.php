@@ -1,15 +1,6 @@
 <?php
 
-function validData($data)
-{
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   $data = nl2br($data);
-   return $data;
-}
-
-function testDatas($civilite,$firstname,$birthday,$state,$nationality,$adress,$cp,$city,$email,$phone,$diploma,$pole_emploi_id,$nb_badges,$codeacademy_links,$marvel,$hacks,$xp)
+function testDatas($civilite, $firstname, $birthday, $state, $nationality, $adress, $cp, $city, $email, $phone, $diploma, $pole_emploi_id, $nb_badges, $codeacademy_links, $marvel, $hacks, $xp)
 {
    $return_datas = array();
    $errors_tab = array();
@@ -17,54 +8,64 @@ function testDatas($civilite,$firstname,$birthday,$state,$nationality,$adress,$c
       list($yyyy, $mm, $dd) = explode("-", $birthday);
       $marvel = str_replace('\\r\\n', ' ', $marvel);
       $nb_badges = (int) $nb_badges;
-      $return_datas += ['civilite'=>'<p class="valid-para">Civilité : ' . strtoupper($civilite) . '</p>'];
+      $return_datas += ['civilite' => '<p class="valid-para">Civilité : ' . strtoupper($civilite) . '</p>'];
       if (!preg_match(REGEX_STRINGS, $firstname)) {
-         $errors_tabs = ['civilite'=>'<p class="error-para">Erreur sur le prénom.</p>'];
+         $errors_tabs = ['firstname' => '<p class="error-para">Erreur sur le prénom.</p>'];
+         throw new Exception('Erreur sur le prénom');
       } else {
-         $return_datas += ['firstname'=> '<p class="valid-para">Prénom : ' . $firstname . '</p>'];
+         $return_datas += ['firstname' => '<p class="valid-para">Prénom : ' . $firstname . '</p>'];
       }
       if (!checkdate($mm, $dd, $yyyy)) {
-         $errors_tabs += ['birthday'=>'<p class="error-para">Erreur sur la date de naissance.</p>'];
+         $errors_tabs += ['birthday' => '<p class="error-para">Erreur sur la date de naissance.</p>'];
+         throw new Exception('Erreur sur la date de naissance');
       } else {
-         $return_datas += ['birthday'=>'<p class="valid-para">Date de naissance : ' . $dd . '-' . $mm . '-' . $yyyy . '</p>'];
+         $return_datas += ['birthday' => '<p class="valid-para">Date de naissance : ' . $dd . '-' . $mm . '-' . $yyyy . '</p>'];
       }
       if (!preg_match(REGEX_STRINGS, $state)) {
-         $errors_tabs += ['state'=>'<p class="error-para">Erreur sur le pays de naissance.</p>'];
+         $errors_tabs += ['state' => '<p class="error-para">Erreur sur le pays de naissance.</p>'];
+         throw new Exception('Erreur sur le pays');
       } else {
-         $return_datas += ['state'=>'<p class="valid-para">Pays de naissance : ' . $state . '</p>'];
+         $return_datas += ['state' => '<p class="valid-para">Pays de naissance : ' . $state . '</p>'];
       }
       if (!preg_match(REGEX_STRINGS, $nationality)) {
-         $errors_tabs += ['nationality'=>'<p class="error-para">Erreur sur la nationnalité.</p>'];
+         $errors_tabs += ['nationality' => '<p class="error-para">Erreur sur la nationnalité.</p>'];
+         throw new Exception('Erreur sur la nationalité');
       } else {
-         $return_datas += ['nationality'=>'<p class="valid-para">Nationalité : ' . $nationality . '</p>'];
+         $return_datas += ['nationality' => '<p class="valid-para">Nationalité : ' . $nationality . '</p>'];
       }
       if (!preg_match(REGEX_ADRESS, $adress)) {
-         $errors_tabs += ['adress'=>'<p class="error-para">Erreur sur l\'adresse.</p>'];
+         $errors_tabs += ['adress' => '<p class="error-para">Erreur sur l\'adresse.</p>'];
+         throw new Exception('Erreur sur l\'adresse');
       } else {
-         $return_datas += ['adress'=>'<p class="valid-para">Adresse : ' . $adress . '</p>'];
+         $return_datas += ['adress' => '<p class="valid-para">Adresse : ' . $adress . '</p>'];
       }
       if (!preg_match(REGEX_CP, $cp)) {
-         $errors_tab += ['cp'=>'<p class="error-para">Erreur sur le code postal.</p>'];
+         $errors_tab += ['cp' => '<p class="error-para">Erreur sur le code postal.</p>'];
+         throw new Exception('Erreur sur le code postal');
       } else {
-         $return_datas += ['cp'=>'<p class="valid-para">Code postal : ' . $cp . '</p>'];
+         $return_datas += ['cp' => '<p class="valid-para">Code postal : ' . $cp . '</p>'];
       }
-      if (!preg_match(REGEX_CITY,strtolower($city))) {
-         $errors_tab += ['city'=>'<p class="error-para">Erreur sur la ville.</p>'];
+      if (!preg_match(REGEX_CITY, strtolower($city))) {
+         $errors_tab += ['city' => '<p class="error-para">Erreur sur la ville.</p>'];
+         throw new Exception('Erreur sur la ville');
       } else {
-         $return_datas += ['city'=>'<p class="valid-para">Ville : ' . $city . '</p>'];
+         $return_datas += ['city' => '<p class="valid-para">Ville : ' . $city . '</p>'];
       }
       if (!filter_var(strtolower($email), FILTER_VALIDATE_EMAIL)) {
-         $errors_tab += ['email'=>'<p class="error-para">Erreur sur l\'email.</p>'];
+         $errors_tab += ['email' => '<p class="error-para">Erreur sur l\'email.</p>'];
+         throw new Exception('Erreur sur l\'email');
       } else {
-         $return_datas += ['email'=>'<p class="valid-para">Email : ' . $email . '</p>'];
+         $return_datas += ['email' => '<p class="valid-para">Email : ' . $email . '</p>'];
       }
       if (!preg_match(REGEX_PHONE, $phone)) {
-         $errors_tab += ['phone'=>'<p class="error-para">Erreur sur le numéro de téléphone.</p>'];
+         $errors_tab += ['phone' => '<p class="error-para">Erreur sur le numéro de téléphone.</p>'];
+         throw new Exception('Erreur sur le numéro de téléphone');
       } else {
-         $return_datas += ['phone'=>'<p class="valid-para">Numéro de téléphone : ' . $phone . '</p>'];
+         $return_datas += ['phone' => '<p class="valid-para">Numéro de téléphone : ' . $phone . '</p>'];
       }
       if (!preg_match(REGEX_DIPLOMA, strtolower($diploma))) {
-         $errors_tab += ['diploma'=>'<p class="error-para">Erreur sur le diplôme.</p>'];
+         $errors_tab += ['diploma' => '<p class="error-para">Erreur sur le diplôme.</p>'];
+         throw new Exception('Erreur sur le diplôme');
       } else {
          switch ($diploma) {
             case 'bac':
@@ -83,52 +84,63 @@ function testDatas($civilite,$firstname,$birthday,$state,$nationality,$adress,$c
             default:
                $diploma = "Sans diplôme";
          }
-         $return_datas += ['diploma'=>'<p class="valid-para">Diplôme : ' . strtolower($diploma) . '</p>'];
+         $return_datas += ['diploma' => '<p class="valid-para">Diplôme : ' . strtolower($diploma) . '</p>'];
       }
       if (!preg_match(REGEX_POLE_EMPLOI, $pole_emploi_id)) {
-         $errors_tab += ['pole_emploi_id'=>'<p class="error-para">Erreur sur l\'identifiant Pôle Emploi.</p>'];
+         $errors_tab += ['pole_emploi_id' => '<p class="error-para">Erreur sur l\'identifiant Pôle Emploi.</p>'];
+         throw new Exception('Erreur sur l\'identifiant pôle emploi');
       } else {
-         $return_datas += ['pole_emploi_id'=>'<p class="valid-para">Identifiant Pôle Emploi : ' . $pole_emploi_id . '</p>'];
+         $return_datas += ['pole_emploi_id' => '<p class="valid-para">Identifiant Pôle Emploi : ' . $pole_emploi_id . '</p>'];
       }
       if ($nb_badges >= 0 || $nb_badges <= 100) {
-         $return_datas += ['nb_badges'=>'<p class="valid-para">Nombre de badges : ' . $nb_badges . '</p>'];
+         $return_datas += ['nb_badges' => '<p class="valid-para">Nombre de badges : ' . $nb_badges . '</p>'];
       } else {
-         $errors_tab += ['nb_badges'=>'<p class="error-para">Erreur sur le nombre de badges.</p>'];
+         $errors_tab += ['nb_badges' => '<p class="error-para">Erreur sur le nombre de badges.</p>'];
+         throw new Exception('Erreur sur le nombre de badges');
       }
       if (!preg_match(REGEX_URL, $codeacademy_links)) {
-         $errors_tab += ['codeacademy_links'=>'<p class="error-para">Erreur sur les liens Code Academy.</p>'];
+         $errors_tab += ['codeacademy_links' => '<p class="error-para">Erreur sur les liens Code Academy.</p>'];
+         throw new Exception('Erreur sur les liens codeacademy');
       } else {
-         $url_links = explode(',', trim($codeacademy_links));
-         $url_links = explode(',', trim($codeacademy_links));
-         $url_links = explode('-', trim($codeacademy_links));
+         $codeacademy_links = preg_replace('/\s\s+/', ' ', $codeacademy_links);
+         $codeacademy_links = str_replace('-', ' ', $codeacademy_links);
+         $codeacademy_links = str_replace(' ', ' ', $codeacademy_links);
          $url_links = explode(' ', trim($codeacademy_links));
          foreach ($url_links as $key => $url) {
-            $url_links[$key] = str_replace(',', $url_links[$key], $url_links[$key]);
-            $return_datas += ['codeacademy_links'=>[$key=>'<p class="valid-para">Liens Codeacademy : ( id: ' . $key . ' )<br/><a href=' . $url_links[$key] . ' target="blank" rel="noopener noreferrer">' . $url_links[$key] . '</a></p>']];
+            // $url_links[$key] = str_replace(',', $url_links[$key], $url_links[$key]);
+            $content = '<p class="valid-para">Liens Codeacademy : ( id: ' . $key . ' )<br/><a href=' . $url . ' target="blank" rel="noopener noreferrer">' . $url_links[$key] . '</a></p>';
+            if(!isset($return_datas['codeacademy_links'])){
+               $return_datas += ['codeacademy_links' => [$url_links[$key] => $content]];
+            }else{
+               $return_datas['codeacademy_links'] += [$url_links[$key] => $content];
+            }
          }
       }
       if (!preg_match(REGEX_STRINGS, $marvel)) {
-         $errors_tab += ['marvel'=>'<p class="error-para">Erreur sur la partie héros.</p>'];
+         $errors_tab += ['marvel' => '<p class="error-para">Erreur sur la partie héros.</p>'];
+         throw new Exception('Erreur sur le marvel');
       } else {
-         $return_datas += ['marvel'=>'<p class="valid-para">Héros : ' . $marvel . '</p>'];
+         $return_datas += ['marvel' => '<p class="valid-para">Héros : ' . $marvel . '</p>'];
       }
       if (!preg_match(REGEX_STRINGS, $hacks)) {
-         $errors_tab += ['marvel'=>'<p class="error-para">Erreur sur la partie hacks.</p>'];
+         $errors_tab += ['hacks' => '<p class="error-para">Erreur sur la partie hacks.</p>'];
+         throw new Exception('Erreur sur le hacks');
       } else {
-         $return_datas += ['hacks'=>'<p class="valid-para">Hacks : ' . $hacks . '</p>'];
+         $return_datas += ['hacks' => '<p class="valid-para">Hacks : ' . $hacks . '</p>'];
       }
       if (!preg_match(REGEX_STRINGS, $xp)) {
-         $errors_tab += ['xp'=>'<p class="error-para">Erreur sur la partie expérience.</p>'];
+         $errors_tab += ['xp' => '<p class="error-para">Erreur sur la partie expérience.</p>'];
+         throw new Exception('Erreur sur l\'xp');
       } else {
-         $return_datas += ['xp'=>'<p class="valid-para">Expérience : ' . $xp . '</p>'];
+         $return_datas += ['xp' => '<p class="valid-para">Expérience : ' . $xp . '</p>'];
       }
    } else {
       var_dump($errors_tab);
    }
-   if(!empty($errors_tab)){
+   if (!empty($errors_tab)) {
       // echo json_encode($errors_tab);
       echo "";
-   }else{
+   } else {
       echo json_encode($return_datas);
    }
 }
@@ -155,4 +167,8 @@ $xp = isset($_POST["xp"]) && !empty($_POST["xp"]) ? validData($_POST["xp"]) : ""
 //    echo '<p>' . $key . ' : ' . $var . '</p>';
 // }
 
-testDatas($civilite,$firstname,$birthday,$state,$nationality,$adress,$cp,$city,$email,$phone,$diploma,$pole_emploi_id,$nb_badges,$codeacademy_links,$marvel,$hacks,$xp);
+try {
+   testDatas($civilite, $firstname, $birthday, $state, $nationality, $adress, $cp, $city, $email, $phone, $diploma, $pole_emploi_id, $nb_badges, $codeacademy_links, $marvel, $hacks, $xp);
+} catch (Exception $e) {
+   echo 'Exception reçue : ',  $e->getMessage(), "\n";
+}

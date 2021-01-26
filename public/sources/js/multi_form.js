@@ -35,7 +35,7 @@ for (const link of links) {
    let direction = link.dataset.direction
    link.addEventListener("click", (e) => {
       e.preventDefault();
-      window.scroll(0,(form.offsetHeight/4))
+      window.scroll(0, (form.offsetHeight / 4))
       switch (direction) {
          case 'forward':
             if (actual_part === 1) {
@@ -77,16 +77,30 @@ for (const link of links) {
    })
 }
 
+for (input of form_inputs) {
+   input.addEventListener("blur", () => {
+      console.log("test")
+   })
+}
+
+
 submit_input.addEventListener("click", (e) => {
    e.preventDefault()
    let ajax = new XMLHttpRequest()
    ajax.open('POST', '?submit_form=p10tp2', true)
    ajax.onload = function (res) {
-      console.log("Form response : " + ajax.responseText);
+      // console.log("Form response : " + ajax.responseText);
       let resultat;
       let html;
       if (ajax.responseText && ajax.responseText != "") {
          resultat = JSON.parse(ajax.responseText);
+         console.log(resultat)
+         let links = []
+         for(link in resultat.codeacademy_links){
+               links.push(resultat.codeacademy_links[link])
+         }
+         links = links.join("")
+         console.log(links)
          html = `
                   ${resultat["civilite"]}
                   ${resultat["firstname"]}
@@ -101,7 +115,7 @@ submit_input.addEventListener("click", (e) => {
                   ${resultat["diploma"]}
                   ${resultat["pole_emploi_id"]}
                   ${resultat["nb_badges"]}
-                  ${resultat["codeacademy_links"]}
+                  ${links}
                   ${resultat["marvel"]}
                   ${resultat["hacks"]}
                   ${resultat["xp"]}
@@ -142,14 +156,17 @@ submit_input.addEventListener("click", (e) => {
    data.append("marvel", document.querySelector("#marvel").value)
    data.append("hacks", document.querySelector("#hacks").value)
    data.append("xp", document.querySelector("#xp").value)
-   console.log(data)
-   ajax.send(data);
+   // Display the key/value pairs
+   // for (var pair of data.entries()) {
+   //    console.log(pair[0] + ' : ' + pair[1]);
+   // }
+   ajax.send(data)
 })
 
-if(cp){
-   cp.addEventListener("keyup", (e)=>{
+if (cp) {
+   cp.addEventListener("keyup", (e) => {
       if (cp.value.length > 5) {
-         cp.value = cp.value.slice(0,5); 
+         cp.value = cp.value.slice(0, 5);
       }
    })
 }

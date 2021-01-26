@@ -16,11 +16,13 @@ ob_start();; ?>
          Rendu visuel
       </h3>
       <form action="public/userpages/p6ex1.php" method="GET">
+         <div class="form-part-1">
          <label for="firstname">Prénom : </label>
          <input type="text" name="firstname" id="firstname" placeholder="John" required/>
          <label for="lastname">Nom de famille :</label>
          <input type="text" name="lastname" id="lastname" placeholder="Doe" required/>
          <input type="submit" value="Valider">
+         </div>
       </form>
    </article>
 </section>

@@ -21,6 +21,7 @@ ob_start();; ?>
          Rendu visuel
       </h3>
       <form action="<?= $_SERVER["REQUEST_URI"]; ?>" method="POST">
+         <div class="form-part-1">
          <select name="civilite" id="civilite">
             <option value="mr">Mr</option>
             <option value="mme">Mme</option>
@@ -30,6 +31,7 @@ ob_start();; ?>
          <label for="lastname">Nom de famille :</label>
          <input type="text" name="lastname" id="lastname" placeholder="Doe" required />
          <input type="submit" value="Valider">
+         </div>
       </form>
    </article>
 </section>

@@ -9,7 +9,8 @@ if (isset($_POST) && !empty($_POST)) {
    $file = isset($_FILES["image"]) && !empty($_FILES["image"]) ? $_FILES["image"] : "";
    $data = '<p>' . $civilite . ' ' . $firstname . ' ' . $lastname . '</p><p>Fichier : '.$file["name"].', Extension : '.pathinfo($file["name"],PATHINFO_EXTENSION) .' </p>';
 } else {
-   $form = '<form action="' . $_SERVER["REQUEST_URI"] . '" method="POST" enctype="multipart/form-data">
+   $form = '
+   <form action="' . $_SERVER["REQUEST_URI"] . '" method="POST" enctype="multipart/form-data"><div class="form-part-1">
    <select name="civilite" id="civilite">
       <option value="mr">Mr</option>
       <option value="mme">Mme</option>
@@ -20,7 +21,8 @@ if (isset($_POST) && !empty($_POST)) {
    <input type="text" name="lastname" id="lastname" placeholder="Doe" required />
    <input type="file" name="image" id="image" accept="image/png, image/jpeg" required />
    <input type="submit" value="Valider">
-</form>';
+   </div></form>
+';
 }
 ob_start();; ?>
 

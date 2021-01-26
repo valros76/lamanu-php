@@ -122,6 +122,9 @@ function launchAction($action)
       case "p10tp2":
          require $root . "/public/controllers/actions/p10tp2.php";
          break;
+      case "p10tp2solo":
+         require $root . "/public/controllers/actions/p10tp2solo.php";
+         break;
       default:
          loadErrorPage("404");
    }

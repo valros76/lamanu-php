@@ -2,9 +2,16 @@
 if(session_status() == PHP_SESSION_NONE){
    session_start();
 }
+$_SESSION['debug'] = true;
 $root = $_SERVER["DOCUMENT_ROOT"];
+function loadClass($class){
+   require $root.'public/models/'.ucfirst($class).'.php';
+}
+spl_autoload_register('loadClass');
+require "public/utils/valid_data.php";
 require "public/utils/regex.php";
 require_once "public/controllers/router.php";
+
 
 $part = isset($_GET["part"]) && !empty($_GET["part"]) ? htmlspecialchars($_GET["part"]) : "";
 $page = isset($_GET["page"]) && !empty($_GET["page"]) ? htmlspecialchars($_GET["page"]) : "";

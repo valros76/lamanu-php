@@ -27,6 +27,7 @@ ob_start();; ?>
          Rendu visuel
       </h3>
       <form action="<?= $_SERVER["REQUEST_URI"];?>" method="POST">
+         <div class="form-part-1">
          <label for="username">
             Pseudo
          </label>
@@ -36,6 +37,7 @@ ob_start();; ?>
          </label>
          <input type="password" placeholder="********" name="password" id="password" required />
          <input type="submit" value="Se connecter">
+         </div>
       </form>
    </article>
 </section>

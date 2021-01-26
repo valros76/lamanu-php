@@ -9,7 +9,8 @@ if (isset($_POST) && !empty($_POST)) {
    $lastname = isset($_POST["lastname"]) && !empty($_POST["lastname"]) ? $_POST["lastname"] : "";
    $data = '<p>' . $civilite . ' ' . $firstname . ' ' . $lastname . '</p>';
 } else {
-   $form = '<form action="' . $_SERVER["REQUEST_URI"] . '" method="POST">
+   $form = '
+   <form action="' . $_SERVER["REQUEST_URI"] . '" method="POST"><div class="form-part-1">
    <select name="civilite" id="civilite">
       <option value="mr">Mr</option>
       <option value="mme">Mme</option>
@@ -19,7 +20,8 @@ if (isset($_POST) && !empty($_POST)) {
    <label for="lastname">Nom de famille :</label>
    <input type="text" name="lastname" id="lastname" placeholder="Doe" required />
    <input type="submit" value="Valider">
-</form>';
+   </div></form>
+';
 }
 ob_start();; ?>
 
