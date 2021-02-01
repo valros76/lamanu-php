@@ -32,6 +32,7 @@ function loadExercice($part, $page)
       case "tp":
       case "tp1":
       case "tp2":
+      case 'galery':
          if ($exists_page) {
             require $exercice;
          } else {
@@ -63,6 +64,7 @@ function loadUserPage($part, $page, $userpage = null)
          case "tp":
          case "tp1":
          case "tp2":
+         case 'galery':
             if ($exists_page) {
                require $userpage;
             } else {
@@ -125,12 +127,16 @@ function launchAction($action)
       case "p10tp2solo":
          require $root . "/public/controllers/actions/p10tp2solo.php";
          break;
+      case "galery":
+         require $root . "/public/controllers/actions/galery.php";
+         break;
       default:
          loadErrorPage("404");
    }
 }
 
-function ajaxRequest($req){
+function ajaxRequest($req)
+{
    global $root;
    switch (true) {
       case $req:

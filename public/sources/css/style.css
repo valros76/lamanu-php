@@ -152,7 +152,8 @@ pre,
 #menu-part-7:hover > .main-menu-part-7,
 #menu-part-8:hover > .main-menu-part-8,
 #menu-part-9:hover > .main-menu-part-9,
-#menu-part-10:hover > .main-menu-part-10 {
+#menu-part-10:hover > .main-menu-part-10,
+#menu-part-galery:hover > .main-menu-part-galery {
   cursor: pointer;
   display: flex;
 }
@@ -166,7 +167,8 @@ pre,
 .main-menu-part-7,
 .main-menu-part-8,
 .main-menu-part-9,
-.main-menu-part-10 {
+.main-menu-part-10,
+.main-menu-part-galery {
   width: 100%;
   display: none;
   flex-direction: column;
@@ -188,7 +190,8 @@ pre,
 .main-menu-part-7 .main-menu-items,
 .main-menu-part-8 .main-menu-items,
 .main-menu-part-9 .main-menu-items,
-.main-menu-part-10 .main-menu-items {
+.main-menu-part-10 .main-menu-items,
+.main-menu-part-galery .main-menu-items {
   width: 100%;
   text-align: center;
   z-index: 3;
@@ -202,7 +205,8 @@ pre,
 .main-menu-part-7 .main-menu-items:hover,
 .main-menu-part-8 .main-menu-items:hover,
 .main-menu-part-9 .main-menu-items:hover,
-.main-menu-part-10 .main-menu-items:hover {
+.main-menu-part-10 .main-menu-items:hover,
+.main-menu-part-galery .main-menu-items:hover {
   text-decoration: underline;
   background-color: #d1d1d1;
 }
@@ -636,6 +640,151 @@ form a:visited:active{
   cursor: pointer;
   background-color: #434a4b;
   color: #fff;
+}
+
+.form-galery{
+  width:100%;
+  min-height:20vh;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-auto-rows:minmax(20px,auto);
+  grid-auto-flow:column dense;
+  gap:0.5em;
+  justify-content:flex-start;
+  align-items:center;
+  padding:0.5em;
+}
+
+.form-galery label{
+  width:100%;
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  text-align:left;
+  flex-wrap:wrap;
+  grid-column:1/span 3;
+}
+
+.form-galery input:not([type="submit"]){
+  width:100%;
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  text-align:left;
+  flex-wrap:wrap;
+  grid-column:1/span 3;
+}.form-galery input[type="submit"]{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  flex-wrap:wrap;
+  grid-column:2;
+}
+
+.form-galery .preview-imgs{
+  width:calc(100% - 1.5em);
+  min-height:15vh;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  grid-auto-rows:minmax(250px);
+  grid-auto-flow:row dense;
+  gap:32px;
+  justify-content:center;
+  align-items:center;
+  grid-column:1/-1;
+  box-shadow:
+  0px 0px 2px 0px #252525,
+  0px 1px 2px -1px #252525,
+  1px 2px 2px -2px #252525;
+  padding:1em;
+  border-radius:8px;
+}
+
+.preview-img{
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  grid-column:span 1;
+  margin:0 auto;
+  object-fit:fill;
+  object-position:center;
+  filter:grayscale(0.5);
+  box-shadow:
+  0px 0px 1px 1px #000, 
+  0px 0px 0px 2px #fff,
+  0px 0px 0px 3px #fff,
+  0px 0px 0px 4px #fff,
+  0px 0px 1px 4.5px #000,
+  0px 5px 2px -1px #000,
+  0px 6px 2px -1px #000,
+  0px 7px 2px -1px #000,
+  5px 5px 2px -1px #000,
+  -5px 5px 2px -1px #000;
+  transition:border-radius .325s ease-in-out, filter .2s ease-in-out;
+}.preview-img:hover{
+  cursor:pointer;
+  border-radius:8px;
+  filter:grayscale(0);
+  box-shadow:
+  0px 0px 1px 1px #000, 
+  0px 0px 0px 2px #fff,
+  0px 0px 0px 3px #fff,
+  0px 0px 0px 4px #fff,
+  0px 0px 1px 4.5px #000,
+  0px 6px 4px -2px #000,
+  0px 7px 4px -2px #000,
+  0px 8px 4px -2px #000,
+  6px 6px 4px -2px #000,
+  -6px 6px 4px -2px #000;
+}
+
+
+.show-galery{
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:1em;
+  margin:1em auto;
+}
+.galery-img{
+  width:250px;
+  height:250px;
+  margin:0 auto;
+  object-fit:fill;
+  object-position:center;
+  filter:grayscale(0.5);
+  border-radius:8px;
+  box-shadow:
+  0px 0px 1px 1px #000, 
+  0px 0px 0px 2px #fff,
+  0px 0px 0px 3px #fff,
+  0px 0px 0px 4px #fff,
+  0px 0px 1px 4.5px #000,
+  0px 5px 2px -1px #000,
+  0px 6px 2px -1px #000,
+  0px 7px 2px -1px #000,
+  5px 5px 2px -1px #000,
+  -5px 5px 2px -1px #000;
+  transition:border-radius .325s ease-in-out, filter .2s ease-in-out, transform .325s ease-in-out;
+}.galery-img:hover{
+  cursor:pointer;
+  filter:grayscale(0);
+  object-fit:scale-down;
+  box-shadow:
+  0px 0px 1px 1px #000, 
+  0px 0px 0px 2px #fff,
+  0px 0px 0px 3px #fff,
+  0px 0px 0px 4px #fff,
+  0px 0px 1px 4.5px #000,
+  0px 6px 4px -2px #000,
+  0px 7px 4px -2px #000,
+  0px 8px 4px -2px #000,
+  6px 6px 4px -2px #000,
+  -6px 6px 4px -2px #000;
 }
 
 @media all and (max-width: 960px) {

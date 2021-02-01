@@ -10,6 +10,7 @@ function loadClass($class){
 spl_autoload_register('loadClass');
 require "public/utils/valid_data.php";
 require "public/utils/regex.php";
+require "public/utils/resizeImg.php";
 require_once "public/controllers/router.php";
 
 

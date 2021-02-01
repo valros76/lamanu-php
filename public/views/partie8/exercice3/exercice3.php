@@ -4,7 +4,7 @@ $pageTitle = "Exercice 3 - P8 - PHP";
 $headTitle = "Exercice 3 - P8";
 setlocale(LC_TIME, "de");
 $date_de = strftime("%A %e %B %G");
-setlocale(LC_TIME, "fr");
+setlocale(LC_TIME, "fr.utf8");
 $date_fr = strftime("%A %e %B %G");
 ob_start();; ?>
 
