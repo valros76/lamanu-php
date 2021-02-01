@@ -80,10 +80,8 @@ if (!empty($files)) {
       $json_datas = file_get_contents($json_path);
       $array_json = json_decode($json_datas, true);
       $array_json = array_merge($array_json,$add_files);
-      $new_datas = $array_json;
-      // var_dump($new_datas);
-      // die();
 
+      $new_datas = $array_json;
       //ajouter les dernières DATAS
       file_put_contents($json_path, json_encode($new_datas));
    }
